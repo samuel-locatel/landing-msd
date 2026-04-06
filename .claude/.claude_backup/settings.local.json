@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash:*)",
+      "mcp__plugin_figma_figma__get_metadata",
+      "mcp__plugin_figma_figma__get_screenshot",
+      "mcp__plugin_figma_figma__get_design_context",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(mv /Users/samuellocatel/Documents/landing-msd/.superpowers /tmp/.superpowers_backup)",
+      "Bash(mv /Users/samuellocatel/Documents/landing-msd/.claude /tmp/.claude_backup)"
+    ]
+  }
+}

@@ -1,14 +1,14 @@
-import { Navbar } from '@/components/sections/Navbar'
-import { Hero } from '@/components/sections/Hero'
-import { SocialProofBar } from '@/components/sections/SocialProofBar'
-import { ProfilesSection } from '@/components/sections/ProfilesSection'
-import { InlineCta } from '@/components/sections/InlineCta'
-import { CostOfInactionSection } from '@/components/sections/CostOfInactionSection'
-import { HowWeWorkSection } from '@/components/sections/HowWeWorkSection'
-import { ObjectionsSection } from '@/components/sections/ObjectionsSection'
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
-import { ContactFormSection } from '@/components/sections/ContactFormSection'
-import { Footer } from '@/components/sections/Footer'
+import { Navbar } from "@/components/sections/Navbar";
+import { Hero } from "@/components/sections/Hero";
+import { SocialProofBar } from "@/components/sections/SocialProofBar";
+import { ProfilesSection } from "@/components/sections/ProfilesSection";
+import { InlineCta } from "@/components/sections/InlineCta";
+import { CostOfInactionSection } from "@/components/sections/CostOfInactionSection";
+import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
+import { ObjectionsSection } from "@/components/sections/ObjectionsSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { ContactFormSection } from "@/components/sections/ContactFormSection";
+import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
   return (
@@ -28,9 +28,9 @@ export default function Home() {
         sub="Sem julgamento. Sem pressão. Só um diagnóstico honesto."
       />
       <ObjectionsSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <ContactFormSection />
       <Footer />
     </main>
-  )
+  );
 }
