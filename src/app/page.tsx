@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
+import { NewsSection } from "@/components/sections/NewsSection";
 import { SocialProofBar } from "@/components/sections/SocialProofBar";
 import { ProfilesSection } from "@/components/sections/ProfilesSection";
 import { InlineCta } from "@/components/sections/InlineCta";
@@ -15,6 +16,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <NewsSection />
       <SocialProofBar />
       <ProfilesSection />
       <InlineCta
