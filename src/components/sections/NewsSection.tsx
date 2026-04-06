@@ -1,5 +1,4 @@
-import { Newspaper, ExternalLink } from 'lucide-react'
-import { EyebrowLabel } from '@/components/ui/EyebrowLabel'
+import { Newspaper, ExternalLink, AlertTriangle } from 'lucide-react'
 
 const ARTICLE = {
   title:
@@ -14,39 +13,42 @@ const ARTICLE = {
 
 export function NewsSection() {
   return (
-    <section className="bg-gray-50 py-24">
+    <section className="bg-dark py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
-          <EyebrowLabel>Na mídia</EyebrowLabel>
-          <h2 className="font-serif text-4xl font-bold text-gray-900 mt-4 leading-tight">
-            Fique por dentro do que está acontecendo
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-red-800 bg-red-950/40 text-red-400 text-xs font-bold uppercase tracking-widest mb-4">
+            <AlertTriangle size={14} aria-hidden="true" />
+            ATENÇÃO
+          </div>
+          <h2 className="font-serif text-4xl font-bold text-white leading-tight">
+            Seu direito está sendo violado. Conheça a lei.
           </h2>
         </div>
 
-        <div className="border border-border rounded-lg p-8 border-l-4 border-l-vinho bg-white shadow-sm">
-          <div className="flex items-center gap-2 text-vinho mb-4">
-            <Newspaper size={20} />
-            <span className="text-xs font-bold uppercase tracking-widest">{ARTICLE.source}</span>
+        <div className="bg-white/5 border border-white/10 border-l-4 border-l-red-500 rounded-lg p-8">
+          <div className="flex items-center gap-2 text-red-400 mb-4">
+            <Newspaper size={20} aria-hidden="true" />
+            <span className="text-xs font-bold uppercase tracking-widest text-white/60">{ARTICLE.source}</span>
           </div>
 
-          <h3 className="font-serif text-2xl font-bold text-gray-900 leading-snug mb-4">
+          <h3 className="font-serif text-2xl font-bold text-white leading-snug mb-4">
             {ARTICLE.title}
           </h3>
 
-          <p className="text-muted leading-relaxed mb-6">{ARTICLE.excerpt}</p>
+          <p className="text-white/60 leading-relaxed mb-6">{ARTICLE.excerpt}</p>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <p className="text-xs text-muted">
+            <p className="text-xs text-white/40">
               {ARTICLE.author} &middot; {ARTICLE.date}
             </p>
             <a
               href={ARTICLE.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-vinho hover:underline"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-red-400 hover:text-red-300"
             >
               Leia o artigo completo
-              <ExternalLink size={14} />
+              <ExternalLink size={14} aria-hidden="true" />
             </a>
           </div>
         </div>
