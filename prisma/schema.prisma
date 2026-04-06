@@ -12,6 +12,7 @@ model Contact {
   phone     String?
   email     String?
   state     String?
+  cnpj      String?
   message   String?
   createdAt DateTime @default(now())
 }
