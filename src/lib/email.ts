@@ -1,7 +1,5 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 interface NotificationPayload {
   name: string
   phone?: string | null
@@ -13,6 +11,8 @@ interface NotificationPayload {
 export async function sendNotification(contact: NotificationPayload): Promise<void> {
   const to = process.env.NOTIFICATION_EMAIL
   if (!to) return
+
+  const resend = new Resend(process.env.RESEND_API_KEY)
 
   await resend.emails.send({
     from: 'noreply@msdassessoria.com.br',
