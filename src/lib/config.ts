@@ -1,3 +1,5 @@
+import { Lock, AlertTriangle, BarChart3, Scale, TrendingUp, type LucideIcon } from 'lucide-react'
+
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5581991644050'
 
 export const WHATSAPP_MESSAGE = encodeURIComponent(
@@ -14,38 +16,45 @@ export const STATS = [
   { value: '500', label: 'Cidades' },
 ] as const
 
-export const PROFILES = [
+export type Profile = {
+  icon: LucideIcon
+  title: string
+  desc: string
+  full: boolean
+}
+
+export const PROFILES: Profile[] = [
   {
-    icon: '🔒',
+    icon: Lock,
     title: 'Farmácia já bloqueada',
     desc: 'O bloqueio chegou, o faturamento parou. Você sabe que não pode esperar — e precisa de quem já viu isso antes.',
     full: false,
   },
   {
-    icon: '⚠️',
+    icon: AlertTriangle,
     title: 'Irregularidades identificadas',
     desc: 'O farmacêutico ou balconista percebeu algo errado na operação. Melhor agir antes de virar auditoria.',
     full: false,
   },
   {
-    icon: '📊',
+    icon: BarChart3,
     title: 'Contador ou assessor preocupado',
     desc: 'Divergências entre compras e vendas, faturamento alto sem controle rigoroso. É hora de um diagnóstico especializado.',
     full: false,
   },
   {
-    icon: '⚖️',
+    icon: Scale,
     title: 'Advogado precisando de suporte técnico',
     desc: 'Processos na CGU, TCU ou esfera criminal exigem mais do que conhecimento jurídico. Somos o suporte técnico especializado.',
     full: false,
   },
   {
-    icon: '📈',
+    icon: TrendingUp,
     title: 'Empresário que quer crescer com segurança',
     desc: 'Redes com múltiplos CNPJs sabem que escala significa maior exposição. Monitoramento preventivo para todas as unidades.',
     full: true,
   },
-] as const
+]
 
 export const COSTS = [
   {
