@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+import { CheckCircle2 } from 'lucide-react'
 import { EyebrowLabel } from '@/components/ui/EyebrowLabel'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { cn } from '@/lib/utils'
@@ -10,10 +11,11 @@ interface FormState {
   phone: string
   email: string
   state: string
+  cnpj: string
   message: string
 }
 
-const INITIAL: FormState = { name: '', phone: '', email: '', state: '', message: '' }
+const INITIAL: FormState = { name: '', phone: '', email: '', state: '', cnpj: '', message: '' }
 
 const ESTADOS = [
   'AC','AL','AP','AM','BA','CE','DF','ES','GO','MA',
@@ -78,7 +80,7 @@ export function ContactFormSection() {
 
         {status === 'success' ? (
           <div className="max-w-2xl bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-            <p className="text-2xl mb-2">✅</p>
+            <CheckCircle2 size={32} className="text-green-600 mx-auto mb-2" />
             <h3 className="font-bold text-gray-900 mb-2">Mensagem recebida!</h3>
             <p className="text-sm text-muted">
               Nossa equipe entrará em contato em breve. Você também pode nos chamar diretamente no WhatsApp.
@@ -136,6 +138,19 @@ export function ContactFormSection() {
                   <option key={uf} value={uf}>{uf}</option>
                 ))}
               </select>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-muted uppercase tracking-wide">
+                CNPJ
+              </label>
+              <input
+                type="text"
+                value={form.cnpj}
+                onChange={update('cnpj')}
+                placeholder="00.000.000/0000-00"
+                className={inputClass}
+              />
             </div>
 
             <div className="sm:col-span-2 flex flex-col gap-1">
