@@ -16,18 +16,21 @@ export function ProfilesSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {PROFILES.map((profile) => (
-            <div
-              key={profile.title}
-              className={`border border-border rounded-lg p-6 border-l-4 border-l-vinho bg-white shadow-sm hover:shadow-md transition-shadow ${
-                profile.full ? 'sm:col-span-2' : ''
-              }`}
-            >
-              <span className="text-2xl mb-3 block">{profile.icon}</span>
-              <h3 className="font-bold text-gray-900 mb-2">{profile.title}</h3>
-              <p className="text-sm text-muted leading-relaxed">{profile.desc}</p>
-            </div>
-          ))}
+          {PROFILES.map((profile) => {
+            const Icon = profile.icon
+            return (
+              <div
+                key={profile.title}
+                className={`border border-border rounded-lg p-6 border-l-4 border-l-vinho bg-white shadow-sm hover:shadow-md transition-shadow ${
+                  profile.full ? 'sm:col-span-2' : ''
+                }`}
+              >
+                <Icon size={24} className="text-vinho mb-3" />
+                <h3 className="font-bold text-gray-900 mb-2">{profile.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{profile.desc}</p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
