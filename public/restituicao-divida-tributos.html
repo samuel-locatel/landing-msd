@@ -1,0 +1,3650 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      MSD Assessoria | Reduza Dívidas, Recupere Tributos e Regularize seu CNPJ
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      :root {
+        --bg: #eeecea;
+        --bg2: #f5f2f0;
+        --bg3: #ffffff;
+        --vinho: #8b1a3a;
+        --vinho2: #6b1228;
+        --vinho3: #4a0c1c;
+        --prata: #9a9aa8;
+        --prata2: #c8c8d4;
+        --texto: #1a0a0e;
+        --texto2: #4a2030;
+        --texto3: #8a7080;
+      }
+      body {
+        font-family: "Barlow", sans-serif;
+        background: var(--bg);
+        color: var(--texto);
+        overflow-x: hidden;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.on {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        padding: 14px 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(238, 236, 234, 0.92);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(139, 26, 58, 0.1);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nav-logo-badge {
+        background: var(--vinho);
+        color: white;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        padding: 8px 14px;
+        border-radius: 3px;
+      }
+      .nav-logo-txt {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--texto2);
+        line-height: 1.3;
+      }
+      .nav-logo-sub {
+        font-size: 0.65rem;
+        color: var(--prata);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 400;
+        display: block;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--texto2);
+        text-decoration: none;
+        letter-spacing: 0.3px;
+        transition: color 0.2s;
+      }
+      .nav-link:hover {
+        color: var(--vinho);
+      }
+      .nav-cta {
+        background: var(--vinho);
+        color: white;
+        padding: 10px 24px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.25s;
+        letter-spacing: 0.5px;
+      }
+      .nav-cta:hover {
+        background: var(--vinho2);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(139, 26, 58, 0.25);
+      }
+      .urgency-bar {
+        margin-top: 72px;
+        background: var(--vinho);
+        color: white;
+        text-align: center;
+        padding: 10px 24px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+      .urgency-bar span {
+        color: var(--prata2);
+      }
+      .hero {
+        min-height: 92vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        background: var(--bg2);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-left {
+        padding: 80px 64px 80px 80px;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--vinho);
+        margin-bottom: 28px;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 2px;
+        background: var(--vinho);
+      }
+      .hero h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.8rem, 4.5vw, 5rem);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -1px;
+        color: var(--texto);
+        margin-bottom: 24px;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--vinho);
+      }
+      .hero h1 .mark {
+        position: relative;
+        display: inline-block;
+      }
+      .hero h1 .mark::after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--vinho);
+        opacity: 0.35;
+      }
+      .hero-sub {
+        font-size: 1.1rem;
+        color: var(--texto2);
+        line-height: 1.8;
+        max-width: 480px;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+      .hero-sub strong {
+        color: var(--vinho);
+        font-weight: 600;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 48px;
+      }
+      .btn-primary {
+        background: var(--vinho);
+        color: white;
+        padding: 16px 36px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: 0.3px;
+      }
+      .btn-primary:hover {
+        background: var(--vinho2);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(139, 26, 58, 0.3);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--vinho);
+        padding: 16px 36px;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: none;
+        border: 1.5px solid var(--vinho);
+        transition: all 0.3s;
+      }
+      .btn-secondary:hover {
+        background: rgba(139, 26, 58, 0.06);
+      }
+      .hero-trust {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.8rem;
+        color: var(--texto3);
+        font-weight: 500;
+      }
+      .trust-item .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--vinho);
+        opacity: 0.6;
+      }
+      .hero-right {
+        position: relative;
+        height: 100%;
+        min-height: 600px;
+        overflow: hidden;
+      }
+      .hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.85);
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, var(--bg2) 0%, transparent 30%);
+      }
+      .hero-badge {
+        position: absolute;
+        bottom: 48px;
+        left: -20px;
+        background: white;
+        border-radius: 8px;
+        padding: 20px 28px;
+        box-shadow: 0 20px 60px rgba(26, 10, 14, 0.15);
+        border-left: 4px solid var(--vinho);
+      }
+      .hero-badge-val {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--vinho);
+        line-height: 1;
+      }
+      .hero-badge-lbl {
+        font-size: 0.75rem;
+        color: var(--texto3);
+        margin-top: 4px;
+        font-weight: 500;
+      }
+      .stats {
+        background: var(--vinho);
+        padding: 0;
+      }
+      .stats-inner {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .stat-box {
+        flex: 1;
+        padding: 36px 28px;
+        text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .stat-box:last-child {
+        border: none;
+      }
+      .stat-val {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1;
+      }
+      .stat-lbl {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 6px;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+      }
+      .crise {
+        padding: 100px 48px;
+        background: var(--bg3);
+        position: relative;
+        overflow: hidden;
+      }
+      .crise::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(to right, var(--vinho), var(--prata2));
+      }
+      .crise-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .crise-img-wrap {
+        position: relative;
+      }
+      .crise-img {
+        width: 100%;
+        border-radius: 4px;
+        object-fit: cover;
+        height: 480px;
+        filter: saturate(0.8);
+        display: block;
+      }
+      .crise-quote {
+        position: absolute;
+        bottom: -24px;
+        right: -24px;
+        background: var(--vinho);
+        color: white;
+        padding: 28px 32px;
+        border-radius: 4px;
+        max-width: 280px;
+        box-shadow: 0 20px 50px rgba(139, 26, 58, 0.3);
+      }
+      .crise-quote p {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        font-style: italic;
+        line-height: 1.5;
+      }
+      .crise-quote cite {
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-top: 10px;
+        display: block;
+      }
+      .crise-text .eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--vinho);
+        margin-bottom: 16px;
+        display: block;
+      }
+      .crise-text h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 24px;
+        letter-spacing: -0.5px;
+      }
+      .crise-text p {
+        font-size: 1rem;
+        color: var(--texto2);
+        line-height: 1.9;
+        margin-bottom: 18px;
+        font-weight: 300;
+      }
+      .crise-text p strong {
+        color: var(--vinho);
+        font-weight: 600;
+      }
+      .highlight-box {
+        background: var(--bg);
+        border-left: 3px solid var(--vinho);
+        padding: 20px 24px;
+        border-radius: 0 4px 4px 0;
+        margin-top: 28px;
+      }
+      .highlight-box p {
+        margin: 0;
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--texto2);
+      }
+      .como {
+        padding: 100px 48px;
+        background: var(--bg2);
+      }
+      .section-header {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto 72px;
+      }
+      .section-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--vinho);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+      }
+      .section-sub {
+        font-size: 1rem;
+        color: var(--texto3);
+        line-height: 1.8;
+        margin-top: 14px;
+        font-weight: 300;
+      }
+      .steps-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .step-card {
+        background: var(--bg3);
+        padding: 40px 28px;
+        position: relative;
+        transition: all 0.3s;
+      }
+      .step-card:hover {
+        background: white;
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(26, 10, 14, 0.08);
+      }
+      .step-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 5rem;
+        font-weight: 700;
+        color: rgba(139, 26, 58, 0.08);
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+      .step-ico {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .step-card h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .step-card p {
+        font-size: 0.88rem;
+        color: var(--texto3);
+        line-height: 1.75;
+        font-weight: 300;
+      }
+      .step-connector {
+        position: absolute;
+        top: 50%;
+        right: -20px;
+        width: 40px;
+        height: 40px;
+        background: var(--vinho);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        z-index: 2;
+      }
+      .prazo-strip {
+        max-width: 1200px;
+        margin: 40px auto 0;
+        background: var(--vinho);
+        border-radius: 4px;
+        padding: 36px 48px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .prazo-strip h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        flex: 1;
+      }
+      .prazo-strip p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        flex: 2;
+        line-height: 1.7;
+        margin: 0;
+      }
+      .prazo-days {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1;
+        flex-shrink: 0;
+        text-align: center;
+      }
+      .prazo-days span {
+        font-size: 0.75rem;
+        font-family: "Barlow", sans-serif;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.6);
+        display: block;
+        letter-spacing: 1px;
+      }
+      .modalidades {
+        padding: 100px 48px;
+        background: var(--bg3);
+      }
+      .modal-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        max-width: 1200px;
+        margin: 60px auto 0;
+      }
+      .modal-card {
+        background: var(--bg2);
+        padding: 48px 36px;
+        position: relative;
+        transition: all 0.3s;
+        border-top: 3px solid transparent;
+      }
+      .modal-card.destaque {
+        background: var(--vinho);
+        border-top-color: rgba(255, 255, 255, 0.4);
+      }
+      .modal-card:not(.destaque):hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(139, 26, 58, 0.1);
+        border-top-color: var(--vinho);
+      }
+      .modal-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 30px;
+        background: rgba(139, 26, 58, 0.12);
+        color: var(--vinho);
+        margin-bottom: 20px;
+      }
+      .modal-card.destaque .modal-badge {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+      .modal-pct {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--vinho);
+        margin-bottom: 8px;
+      }
+      .modal-card.destaque .modal-pct {
+        color: var(--prata2);
+      }
+      .modal-pct-lbl {
+        font-size: 0.8rem;
+        color: var(--texto3);
+        margin-bottom: 24px;
+      }
+      .modal-card.destaque .modal-pct-lbl {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .modal-divider {
+        width: 40px;
+        height: 2px;
+        background: var(--vinho);
+        opacity: 0.2;
+        margin-bottom: 24px;
+      }
+      .modal-card.destaque .modal-divider {
+        background: white;
+        opacity: 0.3;
+      }
+      .modal-card h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: var(--texto);
+      }
+      .modal-card.destaque h4 {
+        color: white;
+      }
+      .modal-card p {
+        font-size: 0.88rem;
+        line-height: 1.8;
+        color: var(--texto3);
+        font-weight: 300;
+      }
+      .modal-card.destaque p {
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .modal-items {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .modal-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: var(--texto3);
+      }
+      .modal-card.destaque .modal-item {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .modal-item::before {
+        content: "✓";
+        color: var(--vinho);
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .modal-card.destaque .modal-item::before {
+        color: var(--prata2);
+      }
+      .simulador-sec {
+        padding: 100px 48px;
+        background: var(--bg2);
+      }
+      .sim-tabs-wrap {
+        max-width: 1200px;
+        margin: 60px auto 0;
+      }
+      .sim-tabs {
+        display: flex;
+        gap: 2px;
+      }
+      .sim-tab {
+        flex: 1;
+        padding: 18px 24px;
+        background: var(--bg);
+        border: none;
+        cursor: pointer;
+        font-family: "Barlow", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--texto3);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: all 0.25s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        border-radius: 4px 4px 0 0;
+      }
+      .sim-tab .tab-val {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+      .sim-tab.active {
+        background: var(--vinho);
+        color: white;
+      }
+      .sim-tab.active .tab-val {
+        color: var(--prata2);
+      }
+      .sim-tab:hover:not(.active) {
+        background: var(--bg3);
+        color: var(--vinho);
+      }
+      .sim-content {
+        background: var(--bg3);
+        display: none;
+      }
+      .sim-content.active {
+        display: block;
+      }
+      .sim-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+      }
+      .sim-left {
+        padding: 48px;
+      }
+      .sim-left h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .sim-left > p {
+        font-size: 0.88rem;
+        color: var(--texto3);
+        margin-bottom: 32px;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+      .sim-field {
+        margin-bottom: 20px;
+      }
+      .sim-field label {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--prata);
+        margin-bottom: 8px;
+      }
+      .sim-field input,
+      .sim-field select {
+        width: 100%;
+        background: var(--bg);
+        border: 1px solid rgba(139, 26, 58, 0.12);
+        border-radius: 4px;
+        padding: 13px 16px;
+        color: var(--texto);
+        font-size: 0.95rem;
+        font-family: "Barlow", sans-serif;
+        outline: none;
+        transition: border-color 0.2s;
+        -webkit-appearance: none;
+      }
+      .sim-field input:focus,
+      .sim-field select:focus {
+        border-color: var(--vinho);
+      }
+      .sim-note {
+        background: rgba(139, 26, 58, 0.06);
+        border: 1px solid rgba(139, 26, 58, 0.15);
+        border-radius: 4px;
+        padding: 14px 18px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .sim-note p {
+        font-size: 0.8rem;
+        color: var(--texto2);
+        line-height: 1.5;
+        margin: 0;
+      }
+      .sim-calc-btn {
+        width: 100%;
+        padding: 15px;
+        background: var(--vinho);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "Barlow", sans-serif;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+      }
+      .sim-calc-btn:hover {
+        background: var(--vinho2);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(139, 26, 58, 0.25);
+      }
+      .sim-right {
+        background: var(--vinho3);
+        padding: 48px;
+      }
+      .sim-right-title {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 28px;
+      }
+      .sim-result-big {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 4.5rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1;
+        margin-bottom: 4px;
+        transition: all 0.4s;
+      }
+      .sim-result-note {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 32px;
+      }
+      .sim-rows {
+        display: flex;
+        flex-direction: column;
+      }
+      .sim-r-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.88rem;
+      }
+      .sim-r-row:last-child {
+        border: none;
+      }
+      .sim-r-row span {
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 300;
+      }
+      .sim-r-row strong {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+      }
+      .sim-r-row.hl span {
+        color: var(--prata2);
+        font-weight: 600;
+      }
+      .sim-r-row.hl strong {
+        color: white;
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+      .sim-info-box {
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        padding: 14px 18px;
+      }
+      .sim-info-box p {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+        margin: 0;
+      }
+      .sim-info-box strong {
+        color: var(--prata2);
+      }
+      .sim-cta-link {
+        display: block;
+        text-align: center;
+        margin-top: 18px;
+        background: white;
+        color: var(--vinho);
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 14px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .sim-cta-link:hover {
+        background: var(--prata2);
+      }
+      .calc-sec {
+        padding: 100px 48px;
+        background: var(--bg);
+      }
+      .calc-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 48px;
+        max-width: 1200px;
+        margin: 60px auto 0;
+        align-items: start;
+      }
+      .calc-form {
+        background: var(--bg3);
+        border: 1px solid rgba(139, 26, 58, 0.1);
+        border-radius: 4px;
+        padding: 48px;
+      }
+      .calc-form h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .calc-form > p {
+        font-size: 0.88rem;
+        color: var(--texto3);
+        margin-bottom: 36px;
+        font-weight: 300;
+      }
+      .field {
+        margin-bottom: 20px;
+      }
+      .field label {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--prata);
+        margin-bottom: 8px;
+      }
+      .field input,
+      .field select {
+        width: 100%;
+        background: var(--bg);
+        border: 1px solid rgba(139, 26, 58, 0.12);
+        border-radius: 4px;
+        padding: 14px 16px;
+        color: var(--texto);
+        font-size: 0.95rem;
+        font-family: "Barlow", sans-serif;
+        outline: none;
+        transition: border-color 0.2s;
+        -webkit-appearance: none;
+      }
+      .field input:focus,
+      .field select:focus {
+        border-color: var(--vinho);
+      }
+      .field select option {
+        background: #f5f2f0;
+      }
+      .calc-note {
+        background: rgba(139, 26, 58, 0.06);
+        border: 1px solid rgba(139, 26, 58, 0.15);
+        border-radius: 4px;
+        padding: 14px 18px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .calc-note p {
+        font-size: 0.8rem;
+        color: var(--texto2);
+        line-height: 1.5;
+        margin: 0;
+      }
+      .calc-btn {
+        width: 100%;
+        padding: 16px;
+        background: var(--vinho);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "Barlow", sans-serif;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+      }
+      .calc-btn:hover {
+        background: var(--vinho2);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 28px rgba(139, 26, 58, 0.25);
+      }
+      .result-panel {
+        background: var(--texto);
+        border-radius: 4px;
+        overflow: hidden;
+        position: sticky;
+        top: 100px;
+      }
+      .result-top {
+        padding: 44px 40px;
+        text-align: center;
+        background: var(--vinho3);
+      }
+      .result-lbl {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 8px;
+      }
+      .result-poderate {
+        font-size: 0.8rem;
+        color: var(--prata2);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .result-big {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3.8rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1;
+        margin-bottom: 6px;
+        transition: all 0.4s;
+      }
+      .result-note-txt {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .result-rows {
+        padding: 28px 40px;
+      }
+      .r-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 11px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.88rem;
+      }
+      .r-row:last-child {
+        border: none;
+      }
+      .r-row span {
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 300;
+      }
+      .r-row strong {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+      }
+      .r-row.hl span {
+        color: var(--prata2);
+        font-weight: 600;
+      }
+      .r-row.hl strong {
+        color: white;
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+      .result-prazo-box {
+        margin: 0 32px 24px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .result-prazo-box p {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.5;
+        margin: 0;
+      }
+      .result-prazo-box strong {
+        color: var(--prata2);
+      }
+      .result-cta-btn {
+        margin: 0 32px 32px;
+        display: block;
+        text-align: center;
+        background: var(--vinho);
+        color: white;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+      }
+      .result-cta-btn:hover {
+        background: #a83050;
+      }
+      .form-sec {
+        padding: 100px 48px;
+        background: var(--bg2);
+        position: relative;
+      }
+      .form-sec::before {
+        content: "REGULARIZE AGORA";
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 6rem;
+        font-weight: 700;
+        color: rgba(139, 26, 58, 0.04);
+        white-space: nowrap;
+        pointer-events: none;
+      }
+      .form-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 60px auto 0;
+        align-items: start;
+      }
+      .form-left h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+      .form-left > p {
+        font-size: 0.95rem;
+        color: var(--texto2);
+        line-height: 1.8;
+        margin-bottom: 32px;
+        font-weight: 300;
+      }
+      .form-guarantees {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .form-g {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .form-g-ico {
+        font-size: 1.3rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .form-g-txt h5 {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--texto);
+        margin-bottom: 3px;
+      }
+      .form-g-txt p {
+        font-size: 0.82rem;
+        color: var(--texto3);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+      .form-card {
+        background: var(--bg3);
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid rgba(139, 26, 58, 0.1);
+      }
+      .form-head {
+        background: var(--vinho);
+        padding: 28px 36px;
+      }
+      .form-head h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 4px;
+      }
+      .form-head p {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .form-body {
+        padding: 36px;
+      }
+      .f-field {
+        margin-bottom: 18px;
+      }
+      .f-field label {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--prata);
+        margin-bottom: 8px;
+      }
+      .f-field input,
+      .f-field select {
+        width: 100%;
+        background: var(--bg);
+        border: 1.5px solid rgba(139, 26, 58, 0.1);
+        border-radius: 4px;
+        padding: 13px 16px;
+        color: var(--texto);
+        font-size: 0.92rem;
+        font-family: "Barlow", sans-serif;
+        outline: none;
+        transition: all 0.2s;
+        -webkit-appearance: none;
+      }
+      .f-field input:focus,
+      .f-field select:focus {
+        border-color: var(--vinho);
+        background: white;
+        box-shadow: 0 0 0 3px rgba(139, 26, 58, 0.08);
+      }
+      .f-field input::placeholder {
+        color: rgba(74, 32, 48, 0.3);
+      }
+      .f-field select option {
+        background: white;
+      }
+      .f-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .f-cnpj-wrap {
+        position: relative;
+      }
+      .f-cnpj-wrap input {
+        padding-right: 48px;
+      }
+      .f-cnpj-ok {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--vinho);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        color: white;
+        font-weight: 700;
+      }
+      .f-submit {
+        width: 100%;
+        padding: 16px;
+        background: var(--vinho);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "Barlow", sans-serif;
+        transition: all 0.3s;
+        margin-top: 8px;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .f-submit:hover {
+        background: var(--vinho2);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 28px rgba(139, 26, 58, 0.3);
+      }
+      .f-submit:disabled {
+        background: var(--prata);
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+      .f-privacy {
+        text-align: center;
+        font-size: 0.72rem;
+        color: var(--texto3);
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+      .form-success {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 36px;
+        text-align: center;
+        min-height: 400px;
+      }
+      .success-ico {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+      .form-success h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--vinho);
+        margin-bottom: 12px;
+      }
+      .form-success p {
+        font-size: 0.95rem;
+        color: var(--texto3);
+        line-height: 1.7;
+        max-width: 280px;
+      }
+      .urgencia-final {
+        padding: 100px 48px;
+        background: var(--vinho);
+        position: relative;
+        overflow: hidden;
+      }
+      .urgencia-final::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .urgencia-final::after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        left: -60px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.1);
+      }
+      .urgencia-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+      .urgencia-inner .eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 20px;
+        display: block;
+      }
+      .urgencia-inner h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        font-weight: 700;
+        color: white;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        letter-spacing: -1px;
+      }
+      .urgencia-inner h2 em {
+        font-style: italic;
+        color: var(--prata2);
+      }
+      .urgencia-inner > p {
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: 44px;
+        font-weight: 300;
+      }
+      .urgencia-counter {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+      .counter-box {
+        text-align: center;
+      }
+      .counter-val {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1;
+      }
+      .counter-lbl {
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 4px;
+      }
+      .wa-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: white;
+        color: var(--vinho);
+        padding: 18px 44px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 1.05rem;
+        text-decoration: none;
+        transition: all 0.3s;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      }
+      .wa-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      }
+      .trust-final {
+        display: flex;
+        justify-content: center;
+        gap: 36px;
+        margin-top: 48px;
+        flex-wrap: wrap;
+      }
+      .trust-final-i {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .trust-final-i::before {
+        content: "✓";
+        color: var(--prata2);
+        font-weight: 700;
+      }
+      /* WATERMARK SECTIONS */
+      .wm-section {
+        position: relative;
+        overflow: hidden;
+      }
+      .wm-section .wm-bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 1;
+      }
+      .wm-section > *:not(.wm-bg) {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Watermark images */
+      .wm-img {
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.045;
+        filter: grayscale(100%) contrast(1.2);
+      }
+
+      /* Segmentos strip */
+      .segmentos-strip {
+        padding: 80px 48px;
+        background: var(--bg3);
+        position: relative;
+        overflow: hidden;
+      }
+      .segmentos-strip::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          to right,
+          var(--vinho3),
+          var(--vinho),
+          var(--prata2)
+        );
+      }
+      .seg-header {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 56px;
+      }
+      .seg-header h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+        margin-bottom: 14px;
+      }
+      .seg-header p {
+        font-size: 0.95rem;
+        color: var(--texto3);
+        line-height: 1.8;
+        font-weight: 300;
+      }
+      .seg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .seg-card {
+        position: relative;
+        overflow: hidden;
+        height: 320px;
+        cursor: default;
+      }
+      .seg-card-img {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.6s ease;
+        filter: saturate(0.7) brightness(0.6);
+      }
+      .seg-card:hover .seg-card-img {
+        transform: scale(1.06);
+        filter: saturate(0.8) brightness(0.5);
+      }
+      .seg-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(74, 12, 28, 0.92) 0%,
+          rgba(74, 12, 28, 0.3) 55%,
+          transparent 100%
+        );
+      }
+      .seg-card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 28px 24px;
+      }
+      .seg-card-ico {
+        font-size: 1.8rem;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .seg-card h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .seg-card p {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+      .seg-card-tag {
+        display: inline-block;
+        background: var(--vinho);
+        color: white;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border-radius: 2px;
+        margin-bottom: 8px;
+      }
+
+      /* Watermark for calc section */
+      .calc-sec {
+        position: relative;
+        overflow: hidden;
+      }
+      .calc-wm {
+        position: absolute;
+        right: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 520px;
+        height: 520px;
+        background-image: url("https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=60&fit=crop");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.04;
+        filter: grayscale(100%);
+        border-radius: 50%;
+      }
+
+      /* Watermark for form section */
+      .form-sec {
+        position: relative;
+      }
+      .form-wm {
+        position: absolute;
+        left: -80px;
+        bottom: 0;
+        width: 480px;
+        height: 480px;
+        background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=60&fit=crop");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.04;
+        filter: grayscale(100%);
+        border-radius: 50%;
+      }
+
+      footer {
+        padding: 32px 48px;
+        background: var(--vinho3);
+        text-align: center;
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.25);
+        line-height: 1.7;
+      }
+      .wpp-cta-strip {
+        background: var(--bg2);
+        padding: 40px 48px;
+        text-align: center;
+        border-top: 1px solid rgba(139, 26, 58, 0.1);
+      }
+      .wpp-cta-strip p {
+        font-size: 0.95rem;
+        color: var(--texto2);
+        margin-bottom: 16px;
+        font-weight: 300;
+      }
+      .wpp-cta-strip p strong {
+        color: var(--vinho);
+      }
+      .wpp-btn-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #25d366;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.3s;
+        letter-spacing: 0.3px;
+      }
+      .wpp-btn-inline:hover {
+        background: #1daf57;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(37, 211, 102, 0.3);
+      }
+
+      .proof-sec {
+        padding: 90px 48px;
+        background: var(--bg3);
+        position: relative;
+        overflow: hidden;
+      }
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        max-width: 1200px;
+        margin: 56px auto 0;
+      }
+      .proof-card {
+        background: var(--bg2);
+        padding: 34px 28px;
+        border-top: 3px solid var(--vinho);
+        border-radius: 6px;
+        box-shadow: 0 10px 30px rgba(26, 10, 14, 0.04);
+      }
+      .proof-card strong {
+        display: block;
+        font-size: 0.75rem;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: var(--vinho);
+        margin-bottom: 14px;
+      }
+      .proof-card h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+      }
+      .proof-card p {
+        font-size: 0.9rem;
+        color: var(--texto3);
+        line-height: 1.75;
+      }
+      .recovery-sec {
+        padding: 95px 48px;
+        background: linear-gradient(180deg, var(--bg2), var(--bg));
+      }
+      .recovery-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 42px;
+        align-items: start;
+      }
+      .recovery-box {
+        background: var(--bg3);
+        padding: 42px;
+        border-radius: 6px;
+        border: 1px solid rgba(139, 26, 58, 0.1);
+      }
+      .recovery-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 28px;
+      }
+      .recovery-item {
+        padding: 16px 18px;
+        background: var(--bg);
+        border-left: 3px solid var(--vinho);
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: var(--texto2);
+      }
+      .recovery-highlight {
+        background: var(--vinho3);
+        color: white;
+        padding: 42px;
+        border-radius: 6px;
+      }
+      .recovery-highlight h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        margin-bottom: 14px;
+        line-height: 1.15;
+      }
+      .recovery-highlight p {
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.8;
+        font-size: 0.95rem;
+      }
+      .recovery-points {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .recovery-points div {
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+        font-size: 0.88rem;
+      }
+      .faq-sec {
+        padding: 95px 48px;
+        background: var(--bg3);
+      }
+      .faq-wrap {
+        max-width: 1100px;
+        margin: 56px auto 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .faq-item {
+        background: var(--bg2);
+        padding: 26px 24px;
+        border-radius: 6px;
+        border: 1px solid rgba(139, 26, 58, 0.08);
+      }
+      .faq-item h4 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: var(--texto);
+      }
+      .faq-item p {
+        font-size: 0.9rem;
+        color: var(--texto3);
+        line-height: 1.75;
+      }
+      .mini-proof {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .mini-proof span {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--texto2);
+        padding: 10px 14px;
+        background: rgba(139, 26, 58, 0.08);
+        border-radius: 999px;
+      }
+      .form-inline-note {
+        background: rgba(139, 26, 58, 0.06);
+        padding: 14px 16px;
+        border-radius: 4px;
+        border: 1px solid rgba(139, 26, 58, 0.12);
+        margin-bottom: 18px;
+        font-size: 0.84rem;
+        color: var(--texto2);
+        line-height: 1.6;
+      }
+      @media (max-width: 900px) {
+        .proof-grid,
+        .faq-wrap,
+        .recovery-wrap,
+        .recovery-list {
+          grid-template-columns: 1fr !important;
+        }
+        .proof-sec,
+        .recovery-sec,
+        .faq-sec {
+          padding: 70px 24px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        nav {
+          padding: 14px 24px;
+        }
+        .nav-right .nav-link {
+          display: none;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+        .hero-left {
+          padding: 60px 24px;
+        }
+        .hero-right {
+          min-height: 300px;
+        }
+        .hero-overlay {
+          background: linear-gradient(
+            to bottom,
+            var(--bg2) 0%,
+            transparent 40%
+          );
+        }
+        .stats-inner,
+        .steps-row,
+        .modal-grid,
+        .calc-wrap,
+        .form-layout,
+        .crise-grid,
+        .sim-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .stat-box {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .step-connector {
+          display: none;
+        }
+        .crise,
+        .como,
+        .modalidades,
+        .simulador-sec,
+        .calc-sec,
+        .form-sec,
+        .urgencia-final {
+          padding: 70px 24px;
+        }
+        .crise-quote {
+          position: static;
+          margin-top: 24px;
+          max-width: 100%;
+        }
+        .urgencia-counter {
+          gap: 20px;
+        }
+        .prazo-strip {
+          flex-direction: column;
+          padding: 32px 24px;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-badge">MSD</div>
+        <div>
+          <div class="nav-logo-txt">Assessoria Tributária</div>
+          <span class="nav-logo-sub">Redução de Dívidas Federais</span>
+        </div>
+      </div>
+      <div class="nav-right">
+        <a href="#como-funciona" class="nav-link">Como funciona</a>
+        <a href="#simulador" class="nav-link">Simular</a>
+        <a href="#calcular" class="nav-link">Calcular</a>
+        <a href="#contato" class="nav-cta">Análise Gratuita →</a>
+      </div>
+    </nav>
+
+    <div class="urgency-bar">
+      ⚠️ Sua empresa pode estar pagando tributos indevidos ou acima do
+      necessário —
+      <span
+        >descubra como reduzir dívidas, recuperar valores e regularizar o CNPJ
+        com segurança</span
+      >
+      · Diagnóstico inicial gratuito
+    </div>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">MSD Assessoria · Regularização Fiscal</div>
+        <h1>
+          Reduza sua dívida com a Receita em até <em>75%</em><br />e descubra se
+          sua empresa tem <span class="mark">valores para recuperar</span>
+        </h1>
+        <p class="hero-sub">
+          Empresas no <strong>Lucro Presumido</strong>, comércio, saúde,
+          distribuição, farmácias, combustíveis e serviços podem estar pagando
+          mais do que deveriam. Nossa equipe faz o diagnóstico, estrutura a
+          estratégia e busca a melhor condição para
+          <strong>reduzir, parcelar e recuperar</strong> tributos com respaldo
+          técnico.
+        </p>
+        <div class="hero-btns">
+          <a href="#simulador" class="btn-primary"
+            >→ Ver minha economia agora</a
+          >
+          <a href="#como-funciona" class="btn-secondary">Como funciona</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="dot"></span>Análise 100% gratuita
+          </div>
+          <div class="trust-item">
+            <span class="dot"></span>Processo 100% legal
+          </div>
+          <div class="trust-item">
+            <span class="dot"></span>Sem risco para a empresa
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img
+          class="hero-img"
+          src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80&fit=crop"
+          alt="Reunião tributária corporativa"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-badge reveal">
+          <div class="hero-badge-val">75%</div>
+          <div class="hero-badge-lbl">desconto máximo em multas e juros</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="stats-inner">
+        <div class="stat-box">
+          <div class="stat-val">75%</div>
+          <div class="stat-lbl">desconto máximo em multas e juros</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">5%</div>
+          <div class="stat-lbl">entrada do valor consolidado</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">12x</div>
+          <div class="stat-lbl">parcelas para pagar a entrada</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">60–145</div>
+          <div class="stat-lbl">meses para o saldo devedor</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">5 anos</div>
+          <div class="stat-lbl">
+            janela comum para revisar pagamentos indevidos
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="proof-sec wm-section" id="provas">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Por que agir agora</span>
+        <h2 class="section-title">
+          Uma frente para reduzir dívidas. Outra para recuperar caixa.
+        </h2>
+        <p class="section-sub">
+          A página antiga falava apenas em renegociação. Nesta nova versão, a
+          oferta foi reposicionada para o que realmente chama atenção do
+          empresário: menos pressão fiscal, mais previsibilidade e possibilidade
+          de recuperar tributos pagos indevidamente.
+        </p>
+      </div>
+      <div class="proof-grid reveal">
+        <div class="proof-card">
+          <strong>Regularização</strong>
+          <h4>Até 75% de desconto</h4>
+          <p>
+            Em modalidades aplicáveis de transação e renegociação, multas e
+            juros podem cair drasticamente, tornando a dívida viável para a
+            empresa voltar a operar com fôlego.
+          </p>
+        </div>
+        <div class="proof-card">
+          <strong>Recuperação</strong>
+          <h4>Revisão dos últimos 5 anos</h4>
+          <p>
+            Segmentos sujeitos a regimes específicos, monofásicos ou pagamentos
+            a maior podem ter crédito tributário ou recuperação de valores
+            conforme a análise documental do CNPJ.
+          </p>
+        </div>
+        <div class="proof-card">
+          <strong>Decisão financeira</strong>
+          <h4>Fluxo de caixa protegido</h4>
+          <p>
+            O objetivo não é apenas protocolar um pedido, mas estruturar uma
+            saída financeiramente sustentável para preservar operação, crédito e
+            crescimento.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="crise wm-section" id="problema">
+      <!-- Watermark: documentos fiscais fundo -->
+      <div class="wm-bg">
+        <div
+          style="
+            position: absolute;
+            right: -40px;
+            top: -60px;
+            width: 420px;
+            height: 420px;
+            background-image: url(&quot;https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=40&fit=crop&quot;);
+            background-size: cover;
+            background-position: center;
+            opacity: 0.04;
+            filter: grayscale(100%);
+            border-radius: 50%;
+          "
+        ></div>
+        <div
+          style="
+            position: absolute;
+            left: -60px;
+            bottom: -40px;
+            width: 320px;
+            height: 320px;
+            background-image: url(&quot;https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=40&fit=crop&quot;);
+            background-size: cover;
+            background-position: center top;
+            opacity: 0.035;
+            filter: grayscale(100%);
+            border-radius: 50%;
+          "
+        ></div>
+      </div>
+      <div class="crise-grid">
+        <div class="crise-img-wrap reveal">
+          <img
+            class="crise-img"
+            src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=900&q=80&fit=crop"
+            alt="Documentos fiscais e contabilidade"
+          />
+          <div class="crise-quote">
+            <p>
+              "Nossa função não é apenas negociar a dívida — é garantir que sua
+              empresa pague o mínimo possível, da forma mais sustentável, e
+              volte a crescer com nome limpo."
+            </p>
+            <cite>— MSD Assessoria Tributária</cite>
+          </div>
+        </div>
+        <div class="crise-text reveal">
+          <span class="eyebrow">Nossa expertise a seu favor</span>
+          <h2>
+            Nós <em>transformamos</em> o peso da sua dívida em um plano que cabe
+            no orçamento
+          </h2>
+          <p>
+            Nossa expertise está em analisar cada detalhe da situação tributária
+            da sua empresa e enquadrá-la na condição mais vantajosa possível.
+            Não existe uma fórmula única — existe o melhor caminho para o
+            <strong>seu</strong> perfil, e é isso que entregamos.
+          </p>
+          <p>
+            Cada empresa chega com uma realidade diferente: dívidas acumuladas
+            por anos, multas que superaram o valor original do tributo, encargos
+            que pareciam impossíveis de pagar. Nosso trabalho é
+            <strong
+              >transformar esse cenário em parcelas que a empresa consegue
+              honrar</strong
+            >, liberando caixa para crescer.
+          </p>
+          <p>
+            Com metodologia própria de análise fiscal, adequamos sua empresa à
+            modalidade de renegociação que oferece o
+            <strong>maior desconto possível no menor prazo</strong> — sem
+            surpresas, sem riscos jurídicos e com total segurança para sócios e
+            gestores.
+          </p>
+          <div class="highlight-box">
+            <p>
+              Com o enquadramento correto, empresas que antes viam a dívida como
+              um peso intransponível passaram a pagar parcelas mensais
+              acessíveis — e
+              <strong
+                >recuperaram acesso a crédito, licitações e novos
+                contratos</strong
+              >
+              em menos de 60 dias.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wpp-cta-strip">
+      <p>
+        Quer ir além do parcelamento?
+        <strong
+          >Converse com um especialista e veja se sua empresa também pode
+          recuperar valores pagos indevidamente.</strong
+        >
+      </p>
+      <a
+        href="https://wa.me/5561995749194?text=Ol%C3%A1!+Quero+reduzir+minha+d%C3%ADvida+tribut%C3%A1ria+e+ver+se+tenho+valores+para+recuperar."
+        target="_blank"
+        class="wpp-btn-inline"
+        >💬 Falar agora pelo WhatsApp — é gratuito</a
+      >
+    </div>
+
+    <section class="recovery-sec" id="recuperacao">
+      <div class="recovery-wrap">
+        <div class="recovery-box reveal">
+          <span class="section-eyebrow">Além da redução da dívida</span>
+          <h2
+            class="section-title"
+            style="font-size: clamp(2rem, 3vw, 2.7rem); text-align: left"
+          >
+            Sua empresa pode ter <em>dinheiro parado</em> em tributos pagos
+            indevidamente
+          </h2>
+          <p class="section-sub" style="text-align: left; margin-top: 18px">
+            Em vários segmentos, a discussão não é apenas parcelar o passivo.
+            Também existe a possibilidade de revisar pagamentos, identificar
+            teses aplicáveis e levantar oportunidades de recuperação
+            administrativa ou compensação.
+          </p>
+          <div class="recovery-list">
+            <div class="recovery-item">
+              Postos de combustíveis e revendas de GLP
+            </div>
+            <div class="recovery-item">
+              Farmácias e comércio com itens monofásicos
+            </div>
+            <div class="recovery-item">Distribuidores e atacadistas</div>
+            <div class="recovery-item">
+              Clínicas, saúde e prestadores de serviço
+            </div>
+            <div class="recovery-item">Empresas que migraram do Simples</div>
+            <div class="recovery-item">
+              Operações com histórico de apuração confusa
+            </div>
+          </div>
+          <div class="mini-proof">
+            <span>Diagnóstico inicial gratuito</span>
+            <span>Levantamento por CNPJ</span>
+            <span>Estratégia fiscal personalizada</span>
+          </div>
+        </div>
+        <div class="recovery-highlight reveal">
+          <h3>O que você descobre na análise</h3>
+          <p>
+            Nosso diagnóstico aponta onde está o maior ganho financeiro:
+            renegociar o passivo, revisar recolhimentos, defender o
+            enquadramento mais vantajoso ou combinar essas frentes em um plano
+            único.
+          </p>
+          <div class="recovery-points">
+            <div>✔ Estimativa de economia com redução de multas e juros</div>
+            <div>
+              ✔ Indícios de tributos recolhidos a maior ou indevidamente
+            </div>
+            <div>✔ Melhor prazo de parcelamento para proteger o caixa</div>
+            <div>✔ Próximos passos para regularizar o CNPJ com segurança</div>
+          </div>
+          <a
+            href="#contato"
+            class="sim-cta-link"
+            style="margin-top: 24px; background: white"
+            >📲 Solicitar diagnóstico completo</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- SEGMENTOS DE PÚBLICO -->
+    <section class="segmentos-strip">
+      <div class="seg-header reveal">
+        <span class="section-eyebrow">Quem atendemos</span>
+        <h2>
+          Empresas com passivo fiscal, transição tributária ou indício de
+          pagamento indevido
+        </h2>
+        <p>
+          Quando a empresa cresce, muda de regime ou vende itens sujeitos a
+          tratamento específico, o risco de pagar errado aumenta. Se a sua
+          operação se encaixa em algum dos perfis abaixo, vale revisar agora.
+        </p>
+      </div>
+      <div class="seg-grid reveal">
+        <div class="seg-card">
+          <div
+            class="seg-card-img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=900&q=80&fit=crop&quot;);
+            "
+          ></div>
+          <div class="seg-card-overlay"></div>
+          <div class="seg-card-content">
+            <span class="seg-card-tag">Revisão tributária</span>
+            <span class="seg-card-ico">💊</span>
+            <h4>Farmácia</h4>
+            <p>
+              Mix de produtos, itens monofásicos e diferenças na apuração podem
+              gerar pagamento acima do necessário e oportunidades de
+              recuperação.
+            </p>
+          </div>
+        </div>
+        <div class="seg-card">
+          <div
+            class="seg-card-img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=80&fit=crop&quot;);
+            "
+          ></div>
+          <div class="seg-card-overlay"></div>
+          <div class="seg-card-content">
+            <span class="seg-card-tag">Comércio varejista</span>
+            <span class="seg-card-ico">🛒</span>
+            <h4>Supermercado</h4>
+            <p>
+              Operações com grande volume de itens e margens apertadas exigem
+              revisão fiscal criteriosa para evitar recolhimentos indevidos.
+            </p>
+          </div>
+        </div>
+        <div class="seg-card">
+          <div
+            class="seg-card-img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80&fit=crop&quot;);
+            "
+          ></div>
+          <div class="seg-card-overlay"></div>
+          <div class="seg-card-content">
+            <span class="seg-card-tag">Alimentação</span>
+            <span class="seg-card-ico">🍽️</span>
+            <h4>Restaurantes</h4>
+            <p>
+              Empresas em expansão ou mudança de regime podem carregar passivos
+              fiscais e desenquadramentos que precisam de correção rápida.
+            </p>
+          </div>
+        </div>
+        <div class="seg-card">
+          <div
+            class="seg-card-img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80&fit=crop&quot;);
+            "
+          ></div>
+          <div class="seg-card-overlay"></div>
+          <div class="seg-card-content">
+            <span class="seg-card-tag">Beleza & varejo</span>
+            <span class="seg-card-ico">🌸</span>
+            <h4>Perfumaria</h4>
+            <p>
+              Produtos com tributação específica e operações de varejo podem
+              esconder créditos e pagamentos feitos de forma incorreta.
+            </p>
+          </div>
+        </div>
+        <div class="seg-card">
+          <div
+            class="seg-card-img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80&fit=crop&quot;);
+            "
+          ></div>
+          <div class="seg-card-overlay"></div>
+          <div class="seg-card-content">
+            <span class="seg-card-tag">Monofásico</span>
+            <span class="seg-card-ico">⛽</span>
+            <h4>Postos de combustíveis</h4>
+            <p>
+              Um dos segmentos mais sensíveis para revisão de PIS/COFINS e
+              análise de pagamentos indevidos na venda final.
+            </p>
+          </div>
+        </div>
+        <div class="seg-card">
+          <div
+            class="seg-card-img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=900&q=80&fit=crop&quot;);
+            "
+          ></div>
+          <div class="seg-card-overlay"></div>
+          <div class="seg-card-content">
+            <span class="seg-card-tag">GLP</span>
+            <span class="seg-card-ico">🔥</span>
+            <h4>Revenda de gás de cozinha</h4>
+            <p>
+              Empresas de GLP frequentemente exigem revisão do tratamento
+              tributário para evitar recolhimento em duplicidade ou acima do
+              devido.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Watermark background -->
+      <div
+        style="
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+          overflow: hidden;
+        "
+      >
+        <div
+          style="
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background-image: url(&quot;https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=30&fit=crop&quot;);
+            background-size: cover;
+            background-position: center;
+            opacity: 0.03;
+            filter: grayscale(100%);
+            border-radius: 50%;
+          "
+        ></div>
+      </div>
+    </section>
+
+    <section
+      class="como wm-section"
+      id="como-funciona"
+      style="
+        padding: 100px 48px;
+        background: var(--bg2);
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <!-- Watermark: handshake / reunião -->
+      <div
+        style="
+          position: absolute;
+          right: -80px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 500px;
+          height: 500px;
+          background-image: url(&quot;https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=30&fit=crop&quot;);
+          background-size: cover;
+          background-position: center;
+          opacity: 0.04;
+          filter: grayscale(100%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+        "
+      ></div>
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        "
+      >
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Processo simplificado</span>
+          <h2 class="section-title">Como regularizar a dívida em 4 passos</h2>
+          <p class="section-sub">
+            Cuidamos de todo o processo junto à Receita Federal. Você foca no
+            negócio.
+          </p>
+        </div>
+        <div class="steps-row">
+          <div class="step-card reveal" style="transition-delay: 0.1s">
+            <div class="step-num">01</div>
+            <span class="step-ico">🔍</span>
+            <h4>Diagnóstico gratuito</h4>
+            <p>
+              Levantamos todas as dívidas ativas no CNPJ e calculamos o desconto
+              máximo aplicável ao seu perfil e regime tributário.
+            </p>
+            <div class="step-connector">→</div>
+          </div>
+          <div class="step-card reveal" style="transition-delay: 0.2s">
+            <div class="step-num">02</div>
+            <span class="step-ico">⚖️</span>
+            <h4>Defesa da sua tese tributária</h4>
+            <p>
+              Construímos uma argumentação personalizada para defender o
+              enquadramento mais vantajoso possível — o critério é aprovado pelo
+              governo, mas a tese que usamos para chegar lá é o que faz toda a
+              diferença.
+            </p>
+            <div class="step-connector">→</div>
+          </div>
+          <div class="step-card reveal" style="transition-delay: 0.3s">
+            <div class="step-num">03</div>
+            <span class="step-ico">📋</span>
+            <h4>Protocolo com acompanhamento semanal</h4>
+            <p>
+              Protocolamos o pedido e mantemos você informado a cada semana
+              sobre o andamento do processo — sem sumir, sem deixar você no
+              escuro até a aprovação final.
+            </p>
+            <div class="step-connector">→</div>
+          </div>
+          <div class="step-card reveal" style="transition-delay: 0.4s">
+            <div class="step-num">04</div>
+            <span class="step-ico">🎉</span>
+            <h4>CND em mãos — celebre!</h4>
+            <p>
+              Nome limpo na praça. Bancos abertos. Fornecedores negociando.
+              Contratos liberados. A Certidão Negativa é o passaporte de volta
+              ao mercado financeiro — e isso merece ser comemorado.
+            </p>
+          </div>
+        </div>
+        <div class="prazo-strip reveal">
+          <div class="prazo-days">30<span>dias para CND</span></div>
+          <div>
+            <h3>
+              🎉 Nome limpo em 30 dias — e com ele, as portas do crédito, dos
+              fornecedores e do crescimento se abrem de uma vez
+            </h3>
+            <p>
+              A CND é muito mais do que um documento: é a sua empresa retomando
+              o lugar que merece no mercado. Com ela, você pode acessar crédito
+              bancário, fechar contratos, participar de licitações, negociar com
+              fornecedores em melhores condições e finalmente ter fôlego para
+              reformar, expandir e crescer. Isso é motivo de comemoração.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wpp-cta-strip">
+      <p>
+        Quer saber em qual enquadramento sua empresa se encaixa?
+        <strong
+          >Nossa análise é gratuita e retornamos em até 2 dias úteis.</strong
+        >
+      </p>
+      <a
+        href="https://wa.me/5561995749194?text=Ol%C3%A1!+Quero+saber+qual+o+melhor+enquadramento+para+a+d%C3%ADvida+da+minha+empresa."
+        target="_blank"
+        class="wpp-btn-inline"
+        >💬 Solicitar análise gratuita pelo WhatsApp</a
+      >
+    </div>
+
+    <section
+      class="modalidades wm-section"
+      id="modalidades"
+      style="position: relative; overflow: hidden"
+    >
+      <!-- Watermark: empresa comercial -->
+      <div
+        style="
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 600px;
+          height: 600px;
+          background-image: url(&quot;https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=30&fit=crop&quot;);
+          background-size: cover;
+          background-position: center top;
+          opacity: 0.03;
+          filter: grayscale(100%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+        "
+      ></div>
+      <div style="max-width: 1200px; margin: 0 auto">
+        <div class="section-header reveal">
+          <span class="section-eyebrow"
+            >Os melhores benefícios para sua empresa</span
+          >
+          <h2 class="section-title">
+            Parcelas que cabem no seu bolso —<br />e o maior desconto que sua
+            situação permite
+          </h2>
+          <p class="section-sub">
+            Nossa prioridade é garantir que você pague o mínimo possível dentro
+            da sua realidade. Com a tese certa e o enquadramento adequado, o
+            alívio no caixa pode ser imediato — e o caminho para voltar a
+            crescer, mais curto do que você imagina.
+          </p>
+        </div>
+        <div class="modal-grid">
+          <div class="modal-card reveal" style="transition-delay: 0.1s">
+            <div class="modal-badge">Modalidade Padrão</div>
+            <div class="modal-pct">50%</div>
+            <div class="modal-pct-lbl">de desconto em multas e juros</div>
+            <div class="modal-divider"></div>
+            <h4>Regularização Essencial</h4>
+            <p>
+              Indicado para dívidas mais recentes. Reduz pela metade o encargo
+              sobre o imposto devido com parcelamento longo.
+            </p>
+            <div class="modal-items">
+              <div class="modal-item">50% de desconto em multas e juros</div>
+              <div class="modal-item">Entrada de 5% em 12 parcelas</div>
+              <div class="modal-item">Saldo em 60 ou 145 meses</div>
+              <div class="modal-item">CND emitida em até 30 dias</div>
+            </div>
+          </div>
+          <div
+            class="modal-card destaque reveal"
+            style="transition-delay: 0.2s"
+          >
+            <div class="modal-badge">⭐ Mais contratado</div>
+            <div class="modal-pct">75%</div>
+            <div class="modal-pct-lbl">de desconto em multas e juros</div>
+            <div class="modal-divider"></div>
+            <h4>Regularização Máxima</h4>
+            <p>
+              O maior benefício disponível nos programas federais. Ideal para
+              dívidas antigas com penalidades acumuladas por anos.
+            </p>
+            <div class="modal-items">
+              <div class="modal-item">75% de desconto em multas e juros</div>
+              <div class="modal-item">Entrada de 5% em 12 parcelas</div>
+              <div class="modal-item">Saldo em 60 ou 145 meses</div>
+              <div class="modal-item">Maior economia total garantida</div>
+            </div>
+          </div>
+          <div class="modal-card reveal" style="transition-delay: 0.3s">
+            <div class="modal-badge">Modalidade Intermediária</div>
+            <div class="modal-pct">60%</div>
+            <div class="modal-pct-lbl">de desconto em multas e juros</div>
+            <div class="modal-divider"></div>
+            <h4>Regularização Ampliada</h4>
+            <p>
+              Balanceia desconto expressivo com condições flexíveis. Indicado
+              para perfis específicos de dívida e regime tributário.
+            </p>
+            <div class="modal-items">
+              <div class="modal-item">60% de desconto em multas e juros</div>
+              <div class="modal-item">Entrada de 5% em 12 parcelas</div>
+              <div class="modal-item">Saldo em 60 ou 145 meses</div>
+              <div class="modal-item">Condições especiais por regime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wpp-cta-strip">
+      <p>
+        Pronto para saber qual desconto sua empresa pode alcançar?
+        <strong
+          >Fale agora com um especialista e receba uma estimativa real.</strong
+        >
+      </p>
+      <a
+        href="https://wa.me/5561995749194?text=Ol%C3%A1!+Quero+saber+qual+desconto+minha+empresa+pode+obter+na+regulariza%C3%A7%C3%A3o+tribut%C3%A1ria."
+        target="_blank"
+        class="wpp-btn-inline"
+        >💬 Garantir minha análise agora</a
+      >
+    </div>
+
+    <section
+      class="simulador-sec wm-section"
+      id="simulador"
+      style="position: relative; overflow: hidden"
+    >
+      <!-- Watermark: planilha/calculadora -->
+      <div
+        style="
+          position: absolute;
+          left: -60px;
+          bottom: -40px;
+          width: 440px;
+          height: 440px;
+          background-image: url(&quot;https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=30&fit=crop&quot;);
+          background-size: cover;
+          background-position: center;
+          opacity: 0.045;
+          filter: grayscale(100%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+        "
+      ></div>
+      <div
+        style="
+          position: absolute;
+          right: -60px;
+          top: -40px;
+          width: 360px;
+          height: 360px;
+          background-image: url(&quot;https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=30&fit=crop&quot;);
+          background-size: cover;
+          background-position: center;
+          opacity: 0.04;
+          filter: grayscale(100%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+        "
+      ></div>
+      <div style="max-width: 1200px; margin: 0 auto">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Simulador de parcelas</span>
+          <h2 class="section-title">
+            Como sua empresa <em>poderá</em> pagar — com o desconto máximo e
+            dentro da sua capacidade
+          </h2>
+          <p class="section-sub">
+            Com o enquadramento certo, sua empresa poderá pagar parcelas que
+            respeitam o seu fluxo de caixa. Mesmo um desconto de 50% já
+            representa um alívio expressivo — e dependendo do perfil da sua
+            dívida, nossa equipe pode conseguir muito mais. Explore os cenários
+            e veja o que um bom trabalho técnico pode entregar para você.
+          </p>
+        </div>
+        <div class="sim-tabs-wrap reveal">
+          <div class="sim-tabs">
+            <button class="sim-tab active" onclick="switchTab('60')">
+              <span>Saldo em 60 meses</span><span class="tab-val">60x</span
+              ><span style="font-size: 0.7rem; opacity: 0.7"
+                >parcelas mensais</span
+              >
+            </button>
+            <button class="sim-tab" onclick="switchTab('145')">
+              <span>Saldo em 145 meses</span><span class="tab-val">145x</span
+              ><span style="font-size: 0.7rem; opacity: 0.7"
+                >parcelas mensais</span
+              >
+            </button>
+          </div>
+          <div class="sim-content active" id="tab-60">
+            <div class="sim-grid">
+              <div class="sim-left">
+                <h3>Parcelamento em 60 meses</h3>
+                <p>
+                  Veja como sua empresa <em>poderá</em> pagar no cenário de 60
+                  meses. Lembre-se: o desconto real depende do enquadramento — e
+                  nossa equipe trabalha para conseguir o máximo para você.
+                </p>
+                <div class="sim-field">
+                  <label>Valor total da dívida (R$)</label
+                  ><input
+                    type="number"
+                    id="div60"
+                    value="200000"
+                    min="10000"
+                    oninput="calc60()"
+                  />
+                </div>
+                <div class="sim-field">
+                  <label>Desconto aplicável</label
+                  ><select id="desc60" onchange="calc60()">
+                    <option value="50">50% de desconto (padrão)</option>
+                    <option value="60">60% de desconto (ampliada)</option>
+                    <option value="75" selected>
+                      75% de desconto (máxima)
+                    </option>
+                  </select>
+                </div>
+                <div class="sim-note">
+                  <span style="font-size: 1rem; flex-shrink: 0">ℹ️</span>
+                  <p>
+                    Entrada de
+                    <strong style="color: var(--vinho)"
+                      >5% do valor consolidado</strong
+                    >
+                    paga em 12 parcelas iguais. Após a entrada: saldo em 60
+                    meses.
+                  </p>
+                </div>
+                <button class="sim-calc-btn" onclick="calc60()">
+                  → Calcular parcelamento em 60 meses
+                </button>
+              </div>
+              <div class="sim-right">
+                <div class="sim-right-title">
+                  Resultado do parcelamento — 60 meses
+                </div>
+                <div class="sim-result-big" id="r60Total">R$ 0</div>
+                <div class="sim-result-note" id="r60Note">
+                  valor consolidado com desconto
+                </div>
+                <div class="sim-rows">
+                  <div class="sim-r-row">
+                    <span>Dívida original</span><strong id="r60Orig">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Desconto aplicado</span
+                    ><strong id="r60Desc" style="color: var(--prata2)"
+                      >—</strong
+                    >
+                  </div>
+                  <div class="sim-r-row hl">
+                    <span>Valor consolidado</span
+                    ><strong id="r60Cons">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Entrada total (5%)</span
+                    ><strong id="r60Ent">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Parcela da entrada (12x)</span
+                    ><strong id="r60EntMes">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Saldo devedor</span><strong id="r60Saldo">—</strong>
+                  </div>
+                  <div class="sim-r-row hl">
+                    <span>Parcela mensal (60x)</span
+                    ><strong id="r60Parc">—</strong>
+                  </div>
+                </div>
+                <div class="sim-info-box">
+                  <p>
+                    Estes são valores <strong>estimados</strong>. Nossos
+                    especialistas trabalham para enquadrar sua empresa no
+                    desconto máximo real — que poderá ser ainda mais favorável
+                    do que o simulado.
+                  </p>
+                </div>
+                <a href="#contato" class="sim-cta-link"
+                  >📲 Quero aderir a este plano</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="sim-content" id="tab-145">
+            <div class="sim-grid">
+              <div class="sim-left">
+                <h3>Parcelamento em 145 meses</h3>
+                <p>
+                  Veja como sua empresa <em>poderá</em> pagar no prazo máximo de
+                  145 meses — o fôlego que talvez você precise para reconstruir.
+                  O enquadramento ideal poderá ampliar essa vantagem ainda mais.
+                </p>
+                <div class="sim-field">
+                  <label>Valor total da dívida (R$)</label
+                  ><input
+                    type="number"
+                    id="div145"
+                    value="200000"
+                    min="10000"
+                    oninput="calc145()"
+                  />
+                </div>
+                <div class="sim-field">
+                  <label>Desconto aplicável</label
+                  ><select id="desc145" onchange="calc145()">
+                    <option value="50">50% de desconto (padrão)</option>
+                    <option value="60">60% de desconto (ampliada)</option>
+                    <option value="75" selected>
+                      75% de desconto (máxima)
+                    </option>
+                  </select>
+                </div>
+                <div class="sim-note">
+                  <span style="font-size: 1rem; flex-shrink: 0">ℹ️</span>
+                  <p>
+                    Entrada de
+                    <strong style="color: var(--vinho)"
+                      >5% do valor consolidado</strong
+                    >
+                    paga em 12 parcelas iguais. Após a entrada: saldo em 145
+                    meses.
+                  </p>
+                </div>
+                <button class="sim-calc-btn" onclick="calc145()">
+                  → Calcular parcelamento em 145 meses
+                </button>
+              </div>
+              <div class="sim-right">
+                <div class="sim-right-title">
+                  Resultado do parcelamento — 145 meses
+                </div>
+                <div class="sim-result-big" id="r145Total">R$ 0</div>
+                <div class="sim-result-note" id="r145Note">
+                  valor consolidado com desconto
+                </div>
+                <div class="sim-rows">
+                  <div class="sim-r-row">
+                    <span>Dívida original</span><strong id="r145Orig">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Desconto aplicado</span
+                    ><strong id="r145Desc" style="color: var(--prata2)"
+                      >—</strong
+                    >
+                  </div>
+                  <div class="sim-r-row hl">
+                    <span>Valor consolidado</span
+                    ><strong id="r145Cons">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Entrada total (5%)</span
+                    ><strong id="r145Ent">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Parcela da entrada (12x)</span
+                    ><strong id="r145EntMes">—</strong>
+                  </div>
+                  <div class="sim-r-row">
+                    <span>Saldo devedor</span><strong id="r145Saldo">—</strong>
+                  </div>
+                  <div class="sim-r-row hl">
+                    <span>Parcela mensal (145x)</span
+                    ><strong id="r145Parc">—</strong>
+                  </div>
+                </div>
+                <div class="sim-info-box">
+                  <p>
+                    Estes são valores <strong>estimados</strong>. Com o
+                    enquadramento correto, o benefício real poderá ser ainda
+                    maior. Nossa equipe trabalha para que você pague o
+                    <strong>mínimo possível</strong>.
+                  </p>
+                </div>
+                <a href="#contato" class="sim-cta-link"
+                  >📲 Quero aderir a este plano</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wpp-cta-strip">
+      <p>
+        Os números te convenceram?
+        <strong
+          >Nossa equipe vai buscar o melhor desconto real para a situação da sua
+          empresa.</strong
+        >
+      </p>
+      <a
+        href="https://wa.me/5561995749194?text=Ol%C3%A1!+Vi+a+simula%C3%A7%C3%A3o+e+quero+saber+qual+desconto+real+minha+empresa+pode+ter."
+        target="_blank"
+        class="wpp-btn-inline"
+        >💬 Quero o meu desconto real — falar agora</a
+      >
+    </div>
+
+    <section
+      class="calc-sec wm-section"
+      id="calcular"
+      style="position: relative; overflow: hidden"
+    >
+      <div class="calc-wm"></div>
+      <!-- Watermark: escritório / lucro presumido -->
+      <div
+        style="
+          position: absolute;
+          left: -40px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 380px;
+          height: 380px;
+          background-image: url(&quot;https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=30&fit=crop&quot;);
+          background-size: cover;
+          background-position: center;
+          opacity: 0.04;
+          filter: grayscale(100%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+        "
+      ></div>
+      <div style="max-width: 1200px; margin: 0 auto">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Calculadora de economia</span>
+          <h2 class="section-title">
+            Quanto sua empresa <em>poderia</em> economizar com o enquadramento
+            ideal?
+          </h2>
+          <p class="section-sub">
+            Não espere — cada mês sem agir é mais encargo acumulado sobre a
+            dívida. Estime agora o benefício que sua empresa
+            <em>poderá alcançar</em> com o enquadramento certo. O resultado pode
+            surpreender você — e quanto antes agir, maior a vantagem que
+            conseguimos defender para o seu caso.
+          </p>
+        </div>
+        <div class="calc-wrap reveal">
+          <div class="calc-form">
+            <h3>Dados da dívida</h3>
+            <p>
+              Preencha o valor e o tempo de acumulação para ver a economia
+              estimada.
+            </p>
+            <div class="field">
+              <label>Valor principal do imposto (R$)</label
+              ><input
+                type="number"
+                id="cPrincipal"
+                value="100000"
+                min="5000"
+                oninput="calcEcon()"
+                placeholder="Ex: 100000"
+              />
+            </div>
+            <div class="field">
+              <label>Tempo médio de acumulação</label
+              ><select id="cTempo" onchange="calcEcon()">
+                <option value="1">1 ano</option>
+                <option value="2">2 anos</option>
+                <option value="3">3 anos</option>
+                <option value="4">4 anos</option>
+                <option value="5" selected>5 anos ou mais</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Desconto a aplicar</label
+              ><select id="cDesc" onchange="calcEcon()">
+                <option value="50">50% de desconto</option>
+                <option value="60">60% de desconto</option>
+                <option value="75" selected>75% de desconto (máximo)</option>
+              </select>
+            </div>
+            <div class="calc-note">
+              <span style="font-size: 1rem; flex-shrink: 0">ℹ️</span>
+              <p>
+                Estimativa baseada em multa de 75% + juros Selic compostos. O
+                valor real é apurado na análise individual do CNPJ.
+              </p>
+            </div>
+            <button class="calc-btn" onclick="calcEcon()">
+              → Calcular minha economia agora
+            </button>
+          </div>
+          <div class="result-panel">
+            <div class="result-top">
+              <div class="result-lbl">Sua economia estimada</div>
+              <div class="result-poderate">Poderá economizar até</div>
+              <div class="result-big" id="eEcon">R$ 0</div>
+              <div class="result-note-txt" id="eNota">
+                Preencha os dados ao lado
+              </div>
+            </div>
+            <div class="result-rows">
+              <div class="r-row">
+                <span>Imposto principal</span><strong id="ePrinc">—</strong>
+              </div>
+              <div class="r-row">
+                <span>Estimativa de multa e juros</span
+                ><strong id="eMulta">—</strong>
+              </div>
+              <div class="r-row">
+                <span>Dívida total estimada</span><strong id="eTotal">—</strong>
+              </div>
+              <div class="r-row">
+                <span>Desconto aplicado</span
+                ><strong id="eDescVal" style="color: var(--prata2)">—</strong>
+              </div>
+              <div class="r-row hl">
+                <span>Você paga apenas</span><strong id="ePaga">—</strong>
+              </div>
+            </div>
+            <div class="result-prazo-box">
+              <span style="font-size: 1.4rem; flex-shrink: 0">📅</span>
+              <p>
+                Saldo pago em até <strong>145 meses</strong> sem comprometer o
+                <strong>fluxo de caixa</strong> da empresa.
+              </p>
+            </div>
+            <a href="#contato" class="result-cta-btn"
+              >📲 Quero regularizar minha empresa</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wpp-cta-strip">
+      <p>
+        Sua estimativa te surpreendeu?
+        <strong
+          >O valor real pode ser ainda mais expressivo com o enquadramento
+          correto. Não espere.</strong
+        >
+      </p>
+      <a
+        href="https://wa.me/5561995749194?text=Ol%C3%A1!+Calculei+a+economia+e+quero+entender+como+minha+empresa+pode+se+enquadrar+da+melhor+forma."
+        target="_blank"
+        class="wpp-btn-inline"
+        >💬 Quero garantir esse benefício — falar agora</a
+      >
+    </div>
+
+    <section
+      class="form-sec wm-section"
+      id="contato"
+      style="position: relative; overflow: hidden"
+    >
+      <div class="form-wm"></div>
+      <!-- Watermark: prédio comercial / empresa -->
+      <div
+        style="
+          position: absolute;
+          right: -60px;
+          top: 60px;
+          width: 420px;
+          height: 420px;
+          background-image: url(&quot;https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&q=30&fit=crop&quot;);
+          background-size: cover;
+          background-position: center;
+          opacity: 0.04;
+          filter: grayscale(100%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+        "
+      ></div>
+      <div style="max-width: 1200px; margin: 0 auto">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Análise gratuita · 2 dias úteis</span>
+          <h2 class="section-title">
+            Garanta sua análise agora —<br /><em>cada dia conta</em>
+          </h2>
+          <p
+            class="section-sub"
+            style="
+              background: var(--vinho);
+              color: white;
+              padding: 18px 28px;
+              border-radius: 4px;
+              font-weight: 500;
+              font-size: 1rem;
+              margin-top: 18px;
+              letter-spacing: 0.2px;
+            "
+          >
+            ⏱ Nossa equipe retorna em até <strong>2 dias úteis</strong> com o
+            diagnóstico completo das dívidas do seu CNPJ — e já com a indicação
+            do melhor caminho para sua empresa economizar o máximo possível.
+          </p>
+        </div>
+        <div class="form-layout">
+          <div class="form-left reveal">
+            <h3>Por que não esperar mais?</h3>
+            <p>
+              Cada dia sem agir representa mais encargos sobre o saldo devedor —
+              e maior risco de bloqueio de contas, penhora de bens e restrições
+              ao CNPJ. Nossa equipe age com agilidade para mapear sua situação e
+              já entregar as melhores opções disponíveis para a sua empresa.
+            </p>
+            <div class="form-guarantees">
+              <div class="form-g">
+                <span class="form-g-ico">🔒</span>
+                <div class="form-g-txt">
+                  <h5>Dados 100% seguros e sigilosos</h5>
+                  <p>
+                    Suas informações são usadas exclusivamente para análise
+                    fiscal. Nunca compartilhadas com terceiros.
+                  </p>
+                </div>
+              </div>
+              <div class="form-g">
+                <span class="form-g-ico">⚡</span>
+                <div class="form-g-txt">
+                  <h5>Retorno em até 2 horas úteis</h5>
+                  <p>
+                    Um especialista tributário entra em contato com o
+                    diagnóstico e as opções disponíveis para o seu CNPJ.
+                  </p>
+                </div>
+              </div>
+              <div class="form-g">
+                <span class="form-g-ico">⚖️</span>
+                <div class="form-g-txt">
+                  <h5>Processo 100% legal e seguro</h5>
+                  <p>
+                    Todos os programas são oficiais da Receita Federal. Zero
+                    risco jurídico para a empresa ou sócios.
+                  </p>
+                </div>
+              </div>
+              <div class="form-g">
+                <span class="form-g-ico">🎯</span>
+                <div class="form-g-txt">
+                  <h5>Zero custo na análise</h5>
+                  <p>
+                    Análise completa sem custo. Honorários apenas sobre o
+                    resultado — você só paga se regularizar.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              style="
+                margin-top: 32px;
+                padding: 22px 26px;
+                background: rgba(139, 26, 58, 0.06);
+                border: 1px solid rgba(139, 26, 58, 0.15);
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+              "
+            >
+              <span style="font-size: 1.8rem; flex-shrink: 0">💬</span>
+              <div>
+                <p
+                  style="
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    color: var(--texto);
+                    margin-bottom: 4px;
+                  "
+                >
+                  Prefere falar direto?
+                </p>
+                <a
+                  href="https://wa.me/5561995749194"
+                  target="_blank"
+                  style="
+                    font-size: 0.85rem;
+                    color: var(--vinho);
+                    font-weight: 600;
+                    text-decoration: none;
+                  "
+                  >→ Clique aqui para o WhatsApp</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-card reveal">
+            <div class="form-head">
+              <h4>Diagnóstico fiscal gratuito</h4>
+              <p>Sem compromisso · Resposta inicial rápida</p>
+            </div>
+            <div class="form-body" id="formBody">
+              <div class="form-inline-note">
+                Preencha o básico. Se houver aderência, nossa equipe coleta os
+                detalhes complementares e apresenta o melhor caminho para
+                <strong>redução, recuperação e regularização</strong>.
+              </div>
+              <div class="f-field">
+                <label>Razão Social / Nome da Empresa</label
+                ><input
+                  type="text"
+                  id="fNome"
+                  placeholder="Ex: Empresa XYZ Ltda"
+                />
+              </div>
+              <div class="f-row">
+                <div class="f-field">
+                  <label>WhatsApp para contato</label
+                  ><input
+                    type="tel"
+                    id="fWpp"
+                    placeholder="(00) 00000-0000"
+                    maxlength="15"
+                    oninput="maskPhone(this)"
+                  />
+                </div>
+                <div class="f-field">
+                  <label>Estimativa do valor total da dívida</label
+                  ><select id="fDivida">
+                    <option value="">Selecione a faixa...</option>
+                    <option value="Até R$ 50.000">Até R$ 50.000</option>
+                    <option value="R$ 50.001 a R$ 150.000">
+                      R$ 50.001 a R$ 150.000
+                    </option>
+                    <option value="R$ 150.001 a R$ 500.000">
+                      R$ 150.001 a R$ 500.000
+                    </option>
+                    <option value="R$ 500.001 a R$ 1.000.000">
+                      R$ 500.001 a R$ 1.000.000
+                    </option>
+                    <option value="R$ 1.000.001 a R$ 5.000.000">
+                      R$ 1.000.001 a R$ 5.000.000
+                    </option>
+                    <option value="Acima de R$ 5.000.000">
+                      Acima de R$ 5.000.000
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="f-field">
+                <label>CNPJ</label>
+                <div class="f-cnpj-wrap">
+                  <input
+                    type="text"
+                    id="fCnpj"
+                    placeholder="00.000.000/0001-00"
+                    maxlength="18"
+                    oninput="maskCnpj(this)"
+                  />
+                  <div class="f-cnpj-ok" id="cnpjOk">✓</div>
+                </div>
+              </div>
+              <div class="f-row">
+                <div class="f-field">
+                  <label>Estado (UF)</label
+                  ><select id="fEstado">
+                    <option value="">Selecione...</option>
+                    <option>AC</option>
+                    <option>AL</option>
+                    <option>AP</option>
+                    <option>AM</option>
+                    <option>BA</option>
+                    <option>CE</option>
+                    <option>DF</option>
+                    <option>ES</option>
+                    <option>GO</option>
+                    <option>MA</option>
+                    <option>MT</option>
+                    <option>MS</option>
+                    <option>MG</option>
+                    <option>PA</option>
+                    <option>PB</option>
+                    <option>PR</option>
+                    <option>PE</option>
+                    <option>PI</option>
+                    <option>RJ</option>
+                    <option>RN</option>
+                    <option>RS</option>
+                    <option>RO</option>
+                    <option>RR</option>
+                    <option>SC</option>
+                    <option>SP</option>
+                    <option>SE</option>
+                    <option>TO</option>
+                  </select>
+                </div>
+                <div class="f-field">
+                  <label>Cidade</label
+                  ><input
+                    type="text"
+                    id="fCidade"
+                    placeholder="Nome da cidade"
+                  />
+                </div>
+              </div>
+              <div class="f-field">
+                <label>E-mail</label
+                ><input
+                  type="email"
+                  id="fEmail"
+                  placeholder="financeiro@empresa.com.br"
+                />
+              </div>
+              <div class="f-field">
+                <label>Regime tributário</label
+                ><select id="fRegime">
+                  <option value="">Selecione...</option>
+                  <option value="Simples Nacional">Simples Nacional</option>
+                  <option value="Lucro Presumido">Lucro Presumido</option>
+                  <option value="Lucro Real">Lucro Real</option>
+                </select>
+              </div>
+              <button class="f-submit" id="fBtn" onclick="enviarForm()">
+                <span>📲</span> Quero meu diagnóstico gratuito agora
+              </button>
+              <p class="f-privacy">
+                🔒 Seus dados são
+                <strong style="color: var(--vinho)">100% seguros</strong> e
+                utilizados apenas para análise tributária.
+              </p>
+            </div>
+            <div class="form-success" id="formSuccess">
+              <div class="success-ico">✅</div>
+              <h4>Solicitação enviada!</h4>
+              <p>
+                Nossa equipe vai entrar em contato pelo WhatsApp
+                <strong id="successWpp"></strong> com os próximos passos da
+                análise e a avaliação inicial sobre redução, recuperação e
+                regularização fiscal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-sec" id="faq">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Dúvidas frequentes</span>
+        <h2 class="section-title">
+          O empresário quer clareza antes de avançar
+        </h2>
+        <p class="section-sub">
+          Por isso, a versão premium responde as objeções mais comuns sem deixar
+          a página pesada.
+        </p>
+      </div>
+      <div class="faq-wrap reveal">
+        <div class="faq-item">
+          <h4>Essa análise serve só para quem já está com dívida ativa?</h4>
+          <p>
+            Não. Ela também faz sentido para empresas que suspeitam de pagamento
+            indevido, querem revisar tributos ou buscam organizar a situação
+            antes que o passivo aumente.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h4>É possível reduzir dívida e recuperar valores ao mesmo tempo?</h4>
+          <p>
+            Em muitos casos, sim. Tudo depende do histórico fiscal, do regime
+            tributário, do tipo de produto ou serviço e dos documentos
+            disponíveis para revisão.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h4>Preciso pagar para descobrir se tenho oportunidade?</h4>
+          <p>
+            Não. O contato inicial e o diagnóstico preliminar servem justamente
+            para identificar aderência antes de qualquer avanço comercial.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h4>Quais segmentos costumam ter maior oportunidade?</h4>
+          <p>
+            Combustíveis, GLP, farmácias, comércio com itens monofásicos,
+            distribuidores, clínicas, serviços e empresas que migraram do
+            Simples costumam merecer atenção especial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="urgencia-final">
+      <div class="urgencia-inner">
+        <span class="eyebrow">O custo real de não agir</span>
+        <h2>
+          Você pode estar perdendo caixa de dois lados:<br />pagando uma dívida
+          pesada e deixando créditos para trás.<br /><em
+            >Mas ainda dá tempo de virar o jogo.</em
+          >
+        </h2>
+        <p>
+          Quando o fiscal aperta, a empresa perde caixa, crédito e margem de
+          negociação. Mas o problema não é só o passivo: em muitos casos, também
+          existe dinheiro pago a maior que nunca foi revisado. Nossa proposta
+          premium combina análise técnica, estratégia e velocidade para
+          encontrar o melhor cenário possível para o CNPJ.
+        </p>
+        <div class="urgencia-counter">
+          <div class="counter-box">
+            <div class="counter-val" id="cDias">--</div>
+            <div class="counter-lbl">dias restantes no ano</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-val">75%</div>
+            <div class="counter-lbl">desconto máximo disponível</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-val">145x</div>
+            <div class="counter-lbl">parcelas disponíveis</div>
+          </div>
+        </div>
+        <a
+          href="https://wa.me/5561995749194?text=Ol%C3%A1!+Quero+analisar+a+redu%C3%A7%C3%A3o+da+d%C3%ADvida+fiscal+da+minha+empresa."
+          class="wa-btn"
+          target="_blank"
+          ><span style="font-size: 1.3rem">💬</span> Falar agora — análise
+          gratuita</a
+        >
+        <div class="trust-final">
+          <div class="trust-final-i">Análise 100% gratuita</div>
+          <div class="trust-final-i">Processo 100% legal</div>
+          <div class="trust-final-i">Sem risco para a empresa</div>
+          <div class="trust-final-i">CND em até 30 dias</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Os valores apresentados são estimativas com finalidade comercial e
+        educativa. A viabilidade de redução, recuperação, compensação ou
+        parcelamento depende da análise individual do CNPJ, do tipo de tributo,
+        do histórico fiscal, do regime tributário e da documentação disponível.
+      </p>
+      <p style="margin-top: 8px">
+        <strong style="color: rgba(255, 255, 255, 0.3)"
+          >MSD Assessoria Empresarial e Financeira</strong
+        >
+        — Todos os direitos reservados.
+      </p>
+    </footer>
+
+    <script>
+      function fmt(v) {
+        return "R$ " + Math.round(v).toLocaleString("pt-BR");
+      }
+      function fmtDec(v) {
+        return (
+          "R$ " +
+          v.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })
+        );
+      }
+      function switchTab(id) {
+        document
+          .querySelectorAll(".sim-tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".sim-content")
+          .forEach((c) => c.classList.remove("active"));
+        document.getElementById("tab-" + id).classList.add("active");
+        const tabs = document.querySelectorAll(".sim-tab");
+        if (id === "60") tabs[0].classList.add("active");
+        else tabs[1].classList.add("active");
+        if (id === "60") calc60();
+        else calc145();
+      }
+      function calcSim(divida, descPct, meses, pre) {
+        const desc = divida * (descPct / 100);
+        const cons = divida - desc;
+        const entrada = cons * 0.05;
+        const entMes = entrada / 12;
+        const saldo = cons - entrada;
+        const parc = saldo / meses;
+        document.getElementById(pre + "Total").textContent = fmt(cons);
+        document.getElementById(pre + "Note").textContent =
+          "valor consolidado com " + descPct + "% de desconto";
+        document.getElementById(pre + "Orig").textContent = fmt(divida);
+        document.getElementById(pre + "Desc").textContent = "- " + fmt(desc);
+        document.getElementById(pre + "Cons").textContent = fmt(cons);
+        document.getElementById(pre + "Ent").textContent = fmt(entrada);
+        document.getElementById(pre + "EntMes").textContent =
+          fmtDec(entMes) + "/mês";
+        document.getElementById(pre + "Saldo").textContent = fmt(saldo);
+        document.getElementById(pre + "Parc").textContent =
+          fmtDec(parc) + "/mês";
+      }
+      function calc60() {
+        const div = parseFloat(document.getElementById("div60").value) || 0;
+        const desc = parseInt(document.getElementById("desc60").value);
+        calcSim(div, desc, 60, "r60");
+      }
+      function calc145() {
+        const div = parseFloat(document.getElementById("div145").value) || 0;
+        const desc = parseInt(document.getElementById("desc145").value);
+        calcSim(div, desc, 145, "r145");
+      }
+      function calcEcon() {
+        const princ =
+          parseFloat(document.getElementById("cPrincipal").value) || 0;
+        const tempo = parseInt(document.getElementById("cTempo").value);
+        const descPct = parseInt(document.getElementById("cDesc").value);
+        const taxaAnual = 0.75 + (Math.pow(1.13, tempo) - 1);
+        const multa = princ * Math.min(taxaAnual, 2.5);
+        const total = princ + multa;
+        const economia = total * (descPct / 100);
+        const paga = total - economia;
+        document.getElementById("eEcon").textContent = fmt(economia);
+        document.getElementById("eNota").textContent =
+          "com " +
+          descPct +
+          "% de desconto em " +
+          tempo +
+          " ano(s) acumulado(s)";
+        document.getElementById("ePrinc").textContent = fmt(princ);
+        document.getElementById("eMulta").textContent = fmt(multa);
+        document.getElementById("eTotal").textContent = fmt(total);
+        document.getElementById("eDescVal").textContent = "- " + fmt(economia);
+        document.getElementById("ePaga").textContent = fmt(paga);
+      }
+      function maskCnpj(el) {
+        let v = el.value.replace(/\D/g, "").substring(0, 14);
+        v = v.replace(/^(\d{2})(\d)/, "$1.$2");
+        v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+        v = v.replace(/\.(\d{3})(\d)/, ".$1/$2");
+        v = v.replace(/(\d{4})(\d)/, "$1-$2");
+        el.value = v;
+        const ok = document.getElementById("cnpjOk");
+        if (v.replace(/\D/g, "").length === 14) {
+          ok.style.display = "flex";
+        } else {
+          ok.style.display = "none";
+        }
+      }
+      function maskPhone(el) {
+        let v = el.value.replace(/\D/g, "").substring(0, 11);
+        if (v.length > 10) {
+          v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+        } else {
+          v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
+        }
+        el.value = v;
+      }
+      function enviarForm() {
+        const cnpj = document.getElementById("fCnpj").value.trim();
+        const nome = document.getElementById("fNome").value.trim();
+        const uf = document.getElementById("fEstado").value;
+        const cidade = document.getElementById("fCidade").value.trim();
+        const wpp = document.getElementById("fWpp").value.trim();
+        const email = document.getElementById("fEmail").value.trim();
+        const divida = document.getElementById("fDivida").value;
+        const regime = document.getElementById("fRegime").value;
+        if (cnpj.replace(/\D/g, "").length < 14) {
+          alert("Por favor, informe o CNPJ completo.");
+          return;
+        }
+        if (!nome) {
+          alert("Por favor, informe a razão social.");
+          return;
+        }
+        if (!uf) {
+          alert("Por favor, selecione o estado.");
+          return;
+        }
+        if (!cidade) {
+          alert("Por favor, informe a cidade.");
+          return;
+        }
+        if (wpp.replace(/\D/g, "").length < 10) {
+          alert("Por favor, informe um WhatsApp válido.");
+          return;
+        }
+        if (!email || !email.includes("@")) {
+          alert("Por favor, informe um e-mail válido.");
+          return;
+        }
+        if (!divida) {
+          alert("Por favor, selecione a faixa de dívida.");
+          return;
+        }
+        if (!regime) {
+          alert("Por favor, selecione o regime tributário.");
+          return;
+        }
+        const btn = document.getElementById("fBtn");
+        btn.disabled = true;
+        btn.innerHTML = "<span>⏳</span> Enviando...";
+        const msg = encodeURIComponent(
+          "📋 *Nova solicitação — MSD Tributária*\n\n🏢 *Empresa:* " +
+            nome +
+            "\n📄 *CNPJ:* " +
+            cnpj +
+            "\n📍 *Local:* " +
+            cidade +
+            " / " +
+            uf +
+            "\n📱 *WhatsApp:* " +
+            wpp +
+            "\n📧 *E-mail:* " +
+            email +
+            "\n💰 *Estimativa da dívida:* " +
+            divida +
+            "\n🏛️ *Regime tributário:* " +
+            regime +
+            "\n\nSolicitação via site MSD Assessoria.",
+        );
+        setTimeout(() => {
+          window.open("https://wa.me/5561995749194?text=" + msg, "_blank");
+          document.getElementById("formBody").style.display = "none";
+          const suc = document.getElementById("formSuccess");
+          suc.style.display = "flex";
+          document.getElementById("successWpp").textContent = wpp;
+        }, 1200);
+      }
+      const now = new Date();
+      const endYear = new Date(now.getFullYear(), 11, 31);
+      const diff = Math.ceil((endYear - now) / (1000 * 60 * 60 * 24));
+      document.getElementById("cDias").textContent = diff;
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting)
+              setTimeout(() => e.target.classList.add("on"), i * 90);
+          });
+        },
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      calc60();
+      calc145();
+      calcEcon();
+    </script>
+  </body>
+</html>
