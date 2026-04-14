@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSD Assessoria | Regularização Tributária para Igrejas — Até 75% de Desconto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & TOKENS ─── */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+:root{
+  --ink:       #0F0608;
+  --ink2:      #3B1020;
+  --ink3:      #7A5060;
+  --blood:     #8C1B38;
+  --blood2:    #6A1228;
+  --blood3:    #3E0A18;
+  --blush:     #F5EDE8;
+  --blush2:    #EEE4DE;
+  --blush3:    #E2D4CC;
+  --cream:     #FDFAF8;
+  --silver:    #B8A8A0;
+  --silver2:   #D8CCC8;
+  --gold:      #C8A86A;
+  --radius:    6px;
+  --ease:      cubic-bezier(.22,.68,0,1.2);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--blush);color:var(--ink);overflow-x:hidden;}
+
+/* ─── UTILS ─── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.on{opacity:1;transform:none;}
+.eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blood);}
+.eyebrow--light{color:var(--silver2);}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:68px;
+  background:rgba(253,250,248,.93);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(140,27,56,.08);
+}
+.logo{display:flex;align-items:center;gap:14px;}
+.logo-mark{
+  width:38px;height:38px;background:var(--blood);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:#fff;letter-spacing:.05em;
+}
+.logo-text{line-height:1.25;}
+.logo-name{font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);}
+.logo-sub{font-size:.62rem;color:var(--ink3);letter-spacing:.06em;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-link{font-size:.85rem;font-weight:500;color:var(--ink3);text-decoration:none;transition:color .2s;}
+.nav-link:hover{color:var(--blood);}
+.nav-cta{
+  padding:9px 22px;border-radius:var(--radius);
+  background:var(--blood);color:#fff;font-size:.82rem;font-weight:600;
+  text-decoration:none;letter-spacing:.04em;
+  transition:background .2s,transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{background:var(--blood2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(140,27,56,.28);}
+
+/* ─── ALERT BAR ─── */
+.alert{
+  margin-top:68px;background:var(--blood3);color:#fff;
+  text-align:center;padding:10px 24px;font-size:.78rem;letter-spacing:.02em;line-height:1.6;
+}
+.alert b{color:var(--silver2);}
+
+/* ───────────────────────────────────────────────────────
+   HERO — full-bleed photo + left text panel
+──────────────────────────────────────────────────────── */
+.hero{
+  position:relative;min-height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;overflow:hidden;
+}
+/* left = text, right = photo */
+.hero-left{
+  position:relative;z-index:2;
+  background:var(--blood3);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:100px 72px 80px 80px;
+}
+.hero-left::after{
+  content:'';position:absolute;top:0;right:-60px;bottom:0;width:120px;
+  background:var(--blood3);clip-path:polygon(0 0,40% 0,100% 100%,0 100%);z-index:3;
+}
+.hero-eyebrow{margin-bottom:28px;color:var(--silver2);}
+.hero h1{
+  font-family:'Playfair Display',serif;font-size:clamp(2.8rem,4.2vw,4.8rem);
+  font-weight:700;line-height:1.03;letter-spacing:-.02em;color:#fff;margin-bottom:28px;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-body{font-size:1rem;color:rgba(255,255,255,.62);line-height:1.9;max-width:480px;margin-bottom:44px;font-weight:300;}
+.hero-body strong{color:rgba(255,255,255,.9);font-weight:500;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+.btn-w{
+  padding:16px 36px;border-radius:var(--radius);font-size:.95rem;font-weight:600;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;letter-spacing:.03em;
+  transition:all .28s;
+}
+.btn-w.solid{background:#fff;color:var(--blood);}
+.btn-w.solid:hover{background:var(--blush);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.25);}
+.btn-w.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3);}
+.btn-w.ghost:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06);}
+.hero-trust{display:flex;flex-wrap:wrap;gap:20px;}
+.trust-pill{display:flex;align-items:center;gap:7px;font-size:.76rem;color:rgba(255,255,255,.45);font-weight:500;}
+.trust-pill svg{flex-shrink:0;}
+
+/* right photo column */
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;}
+.hero-right-vignette{position:absolute;inset:0;background:linear-gradient(to right,var(--blood3) 0%,transparent 25%,transparent 75%,rgba(0,0,0,.3) 100%);}
+/* floating stat card */
+.hero-stat-card{
+  position:absolute;bottom:52px;left:40px;z-index:4;
+  background:rgba(253,250,248,.96);backdrop-filter:blur(12px);
+  border-radius:10px;padding:22px 28px;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+  border-top:3px solid var(--blood);
+  min-width:200px;
+}
+.hsc-val{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;color:var(--blood);line-height:1;}
+.hsc-label{font-size:.72rem;font-weight:500;color:var(--ink3);margin-top:4px;letter-spacing:.04em;}
+.hsc-row{display:flex;justify-content:space-between;gap:24px;margin-top:14px;padding-top:14px;border-top:1px solid var(--blush3);}
+.hsc-mini span{font-size:.62rem;color:var(--ink3);font-weight:500;display:block;letter-spacing:.04em;}
+.hsc-mini strong{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink);}
+
+/* ─── STATS BAR ─── */
+.stats-bar{background:var(--blood);display:flex;}
+.stat-item{flex:1;padding:36px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.1);}
+.stat-item:last-child{border:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#fff;line-height:1;}
+.stat-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;}
+
+/* ─── PHOTO STRIP — 3 images ─── */
+.photo-strip{display:grid;grid-template-columns:2fr 1fr 1fr;height:400px;}
+.ps-item{position:relative;overflow:hidden;}
+.ps-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease,filter .7s ease;filter:brightness(.65) saturate(.75);}
+.ps-item:hover img{transform:scale(1.05);filter:brightness(.55) saturate(.85);}
+.ps-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,6,8,.92) 0%,rgba(15,6,8,.2) 50%,transparent 100%);}
+.ps-label{position:absolute;bottom:28px;left:28px;color:#fff;}
+.ps-label .eyebrow{color:var(--gold);margin-bottom:8px;}
+.ps-label h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;line-height:1.2;}
+/* dividers */
+.ps-item+.ps-item{border-left:2px solid rgba(15,6,8,.4);}
+
+/* ─── SECTION COMMONS ─── */
+.section-wrap{max-width:1200px;margin:0 auto;}
+.section-intro{max-width:640px;margin:0 auto;text-align:center;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.2vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-top:12px;}
+.section-sub{font-size:.97rem;color:var(--ink3);line-height:1.9;margin-top:16px;font-weight:300;}
+
+/* ─── PROBLEMA — split grid ─── */
+.problema{padding:120px 48px;background:var(--cream);}
+.problema-grid{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;max-width:1200px;margin:0 auto;}
+.photo-frame{position:relative;}
+.photo-frame img{width:100%;height:520px;object-fit:cover;object-position:center 25%;border-radius:8px;display:block;box-shadow:0 32px 80px rgba(15,6,8,.18);}
+.pull-quote{
+  position:absolute;bottom:-32px;right:-32px;
+  background:var(--blood);color:#fff;
+  border-radius:8px;padding:28px 30px;max-width:292px;
+  box-shadow:0 20px 60px rgba(140,27,56,.4);
+}
+.pull-quote p{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;line-height:1.65;}
+.pull-quote cite{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-top:10px;display:block;}
+.problema-text .eyebrow{margin-bottom:16px;}
+.problema-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.75rem);font-weight:700;line-height:1.15;margin-bottom:24px;letter-spacing:-.02em;}
+.problema-text p{font-size:.97rem;color:var(--ink2);line-height:1.95;margin-bottom:18px;font-weight:300;}
+.problema-text p strong{color:var(--blood);font-weight:600;}
+.callout{
+  background:linear-gradient(135deg,rgba(140,27,56,.07),rgba(140,27,56,.03));
+  border-left:3px solid var(--blood);border-radius:0 8px 8px 0;
+  padding:20px 24px;margin-top:28px;
+}
+.callout p{font-size:.93rem;font-style:italic;color:var(--ink2);line-height:1.75;margin:0;}
+
+/* ─── WPP STRIP ─── */
+.wpp-strip{padding:44px 48px;background:var(--blush2);text-align:center;border-top:1px solid var(--blush3);}
+.wpp-strip p{font-size:.97rem;color:var(--ink2);margin-bottom:18px;font-weight:300;}
+.wpp-strip p strong{color:var(--blood);}
+.wpp-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#25D366;color:#fff;
+  padding:15px 36px;border-radius:var(--radius);
+  font-weight:600;font-size:.95rem;text-decoration:none;letter-spacing:.03em;
+  transition:all .3s;box-shadow:0 8px 28px rgba(37,211,102,.22);
+}
+.wpp-btn:hover{background:#1DAF57;transform:translateY(-2px);box-shadow:0 16px 40px rgba(37,211,102,.35);}
+
+/* ─── CRIMES — 3 full-bleed image cards ─── */
+.crimes-header{padding:80px 48px 48px;text-align:center;max-width:740px;margin:0 auto;}
+.crimes-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.crime-card{position:relative;height:480px;overflow:hidden;}
+.crime-card-bg{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  transition:transform .7s ease,filter .7s ease;
+  filter:brightness(.45) saturate(.65);
+}
+.crime-card:hover .crime-card-bg{transform:scale(1.06);filter:brightness(.38) saturate(.75);}
+.crime-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,6,8,.98) 0%,rgba(15,6,8,.4) 55%,transparent 100%);}
+.crime-content{position:absolute;bottom:0;left:0;right:0;padding:36px 30px;}
+.crime-tag{display:inline-block;background:var(--blood);color:#fff;font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:14px;}
+.crime-ico{font-size:1.8rem;display:block;margin-bottom:12px;}
+.crime-content h4{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.2;}
+.crime-content p{font-size:.75rem;color:rgba(255,255,255,.52);line-height:1.7;font-weight:300;margin-bottom:16px;}
+.crime-pena{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:5px 12px;border-radius:3px;font-size:.6rem;font-weight:700;letter-spacing:.1em;color:var(--silver2);text-transform:uppercase;}
+
+/* ─── ACCORDION — foto lateral ─── */
+.accordion-sec{padding:110px 48px;background:var(--blush2);}
+.accordion-layout{
+  display:grid;grid-template-columns:340px 1fr;gap:80px;
+  max-width:1100px;margin:0 auto;align-items:start;
+}
+.acc-sidebar{position:sticky;top:100px;}
+.acc-sidebar-img{width:100%;height:300px;object-fit:cover;object-position:center 20%;border-radius:8px;display:block;box-shadow:0 20px 50px rgba(15,6,8,.18);margin-bottom:24px;}
+.acc-sidebar h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;line-height:1.22;margin-bottom:14px;letter-spacing:-.02em;}
+.acc-sidebar p{font-size:.87rem;color:var(--ink3);line-height:1.8;font-weight:300;}
+.acc-list{display:flex;flex-direction:column;gap:3px;}
+.acc-item{background:var(--cream);border-left:3px solid transparent;cursor:pointer;transition:all .25s;border-radius:0 4px 4px 0;}
+.acc-item:hover,.acc-item.open{background:#fff;border-left-color:var(--blood);box-shadow:0 4px 20px rgba(15,6,8,.07);}
+.acc-item.danger:hover,.acc-item.danger.open{border-left-color:#b02010;}
+.acc-q{padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.acc-q-txt{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;line-height:1.3;color:var(--ink);}
+.acc-item.open .acc-q-txt{color:var(--blood);}
+.acc-item.danger.open .acc-q-txt{color:#b02010;}
+.acc-chevron{font-size:1.3rem;color:var(--silver);transition:transform .3s;flex-shrink:0;line-height:1;}
+.acc-item.open .acc-chevron{transform:rotate(90deg);color:var(--blood);}
+.acc-body{display:none;padding:0 26px 22px;font-size:.9rem;color:var(--ink2);line-height:1.9;font-weight:300;border-top:1px solid var(--blush3);}
+.acc-body strong{color:var(--blood);}
+.acc-item.danger .acc-body strong{color:#b02010;}
+
+/* ─── BANNER FOTO FULL-BLEED ─── */
+.banner-photo{position:relative;height:440px;overflow:hidden;}
+.banner-photo img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.38) saturate(.65);}
+.banner-photo-ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(62,10,24,.95) 0%,rgba(62,10,24,.5) 55%,transparent 100%);}
+.banner-photo-text{position:absolute;inset:0;display:flex;align-items:center;padding:0 88px;}
+.banner-photo-text h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.6rem);font-weight:700;color:#fff;line-height:1.08;max-width:640px;letter-spacing:-.02em;}
+.banner-photo-text h2 em{font-style:italic;color:var(--gold);}
+
+/* ─── COMO FUNCIONA ─── */
+.como{padding:120px 48px;background:var(--cream);}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;max-width:1200px;margin:72px auto 0;}
+.step{background:var(--blush2);padding:40px 28px;position:relative;transition:all .3s;border-top:3px solid transparent;}
+.step:hover{background:#fff;transform:translateY(-5px);box-shadow:0 24px 56px rgba(15,6,8,.09);border-top-color:var(--blood);}
+.step-n{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;color:rgba(140,27,56,.07);line-height:1;margin-bottom:20px;}
+.step-ico{font-size:1.9rem;margin-bottom:14px;display:block;}
+.step h4{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:10px;}
+.step p{font-size:.85rem;color:var(--ink3);line-height:1.8;font-weight:300;}
+.step-arrow{position:absolute;top:42px;right:-16px;width:32px;height:32px;background:var(--blood);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:700;z-index:2;}
+.cnd-box{
+  max-width:1200px;margin:44px auto 0;
+  background:var(--blood3);border-radius:8px;padding:44px 56px;
+  display:flex;align-items:center;gap:52px;flex-wrap:wrap;
+}
+.cnd-big{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:#fff;line-height:1;flex-shrink:0;text-align:center;}
+.cnd-big span{font-size:.68rem;font-family:'DM Sans',sans-serif;font-weight:500;color:rgba(255,255,255,.4);display:block;letter-spacing:.1em;margin-top:4px;}
+.cnd-box h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;flex:1;line-height:1.3;}
+.cnd-box p{font-size:.87rem;color:rgba(255,255,255,.55);flex:2;line-height:1.8;margin:0;}
+
+/* ─── MODALIDADES ─── */
+.modal-sec{padding:120px 48px;background:var(--blush);}
+.modal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:1200px;margin:64px auto 0;}
+.modal-card{background:var(--cream);padding:48px 36px;position:relative;transition:all .3s;border-top:3px solid transparent;}
+.modal-card.hi{background:var(--blood);border-top-color:rgba(255,255,255,.25);}
+.modal-card:not(.hi):hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(15,6,8,.1);border-top-color:var(--blood);}
+.modal-badge{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:4px 12px;border-radius:30px;background:rgba(140,27,56,.1);color:var(--blood);margin-bottom:20px;}
+.modal-card.hi .modal-badge{background:rgba(255,255,255,.15);color:#fff;}
+.modal-pct{font-family:'Playfair Display',serif;font-size:5.5rem;font-weight:900;line-height:1;color:var(--blood);margin-bottom:4px;}
+.modal-card.hi .modal-pct{color:var(--silver2);}
+.modal-pct-sub{font-size:.77rem;color:var(--ink3);margin-bottom:24px;}
+.modal-card.hi .modal-pct-sub{color:rgba(255,255,255,.45);}
+.modal-hr{width:40px;height:2px;background:var(--blood);opacity:.15;margin-bottom:24px;}
+.modal-card.hi .modal-hr{background:#fff;opacity:.2;}
+.modal-card h4{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:10px;color:var(--ink);}
+.modal-card.hi h4{color:#fff;}
+.modal-card>p{font-size:.85rem;line-height:1.82;color:var(--ink3);font-weight:300;}
+.modal-card.hi>p{color:rgba(255,255,255,.58);}
+.modal-list{margin-top:22px;display:flex;flex-direction:column;gap:9px;}
+.ml-item{display:flex;align-items:flex-start;gap:9px;font-size:.83rem;color:var(--ink3);}
+.modal-card.hi .ml-item{color:rgba(255,255,255,.7);}
+.ml-item::before{content:'✓';color:var(--blood);font-weight:700;flex-shrink:0;margin-top:1px;}
+.modal-card.hi .ml-item::before{color:var(--silver2);}
+
+/* ─── SIMULADOR ─── */
+.sim-sec{padding:120px 48px;background:var(--blush2);}
+.sim-wrap{max-width:1200px;margin:64px auto 0;}
+.sim-tabs{display:flex;gap:3px;}
+.sim-tab{
+  flex:1;padding:18px 24px;background:var(--blush3);border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink3);
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:all .25s;display:flex;flex-direction:column;align-items:center;gap:3px;
+  border-radius:6px 6px 0 0;
+}
+.sim-tab .tv{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;}
+.sim-tab.active{background:var(--blood);color:#fff;}
+.sim-tab.active .tv{color:var(--silver2);}
+.sim-tab:hover:not(.active){background:var(--cream);color:var(--blood);}
+.sim-panel{background:var(--cream);display:none;border-radius:0 0 8px 8px;box-shadow:0 20px 60px rgba(15,6,8,.09);}
+.sim-panel.active{display:grid;grid-template-columns:1fr 1.1fr;}
+.sim-form{padding:48px;}
+.sim-form h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:6px;}
+.sim-form>p{font-size:.85rem;color:var(--ink3);margin-bottom:32px;font-weight:300;line-height:1.75;}
+.sf{margin-bottom:18px;}
+.sf label{display:block;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-bottom:7px;}
+.sf input,.sf select{width:100%;background:var(--blush);border:1px solid var(--blush3);border-radius:4px;padding:13px 15px;color:var(--ink);font-size:.93rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.sf input:focus,.sf select:focus{border-color:var(--blood);}
+.sf-note{background:rgba(140,27,56,.06);border:1px solid rgba(140,27,56,.12);border-radius:4px;padding:13px 16px;margin-bottom:18px;font-size:.78rem;color:var(--ink2);line-height:1.6;}
+.sf-btn{width:100%;padding:15px;background:var(--blood);border:none;border-radius:4px;color:#fff;font-size:.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .28s;letter-spacing:.04em;}
+.sf-btn:hover{background:var(--blood2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(140,27,56,.3);}
+.sim-result{background:var(--blood3);padding:48px;}
+.sr-label{font-size:.64rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px;}
+.sr-big{font-family:'Playfair Display',serif;font-size:4.2rem;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;transition:all .4s;}
+.sr-note{font-size:.76rem;color:rgba(255,255,255,.28);margin-bottom:32px;}
+.sr-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.85rem;}
+.sr-row:last-child{border:none;}
+.sr-row span{color:rgba(255,255,255,.33);font-weight:300;}
+.sr-row strong{color:rgba(255,255,255,.88);}
+.sr-row.hl span{color:var(--silver2);font-weight:500;}
+.sr-row.hl strong{color:#fff;font-size:1rem;font-weight:600;}
+.sr-hint{margin-top:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:13px 16px;font-size:.75rem;color:rgba(255,255,255,.38);line-height:1.65;}
+.sr-hint strong{color:var(--silver2);}
+.sr-cta{display:block;text-align:center;margin-top:18px;background:#fff;color:var(--blood);font-weight:700;font-size:.88rem;padding:13px;border-radius:4px;text-decoration:none;transition:all .28s;}
+.sr-cta:hover{background:var(--blush2);}
+
+/* ─── CALCULADORA ─── */
+.calc-sec{padding:120px 48px;background:var(--cream);}
+.calc-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;max-width:1200px;margin:64px auto 0;align-items:start;}
+.calc-card{background:#fff;border:1px solid var(--blush3);border-radius:8px;padding:48px;}
+.calc-card h3{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;margin-bottom:6px;}
+.calc-card>p{font-size:.85rem;color:var(--ink3);margin-bottom:36px;font-weight:300;line-height:1.8;}
+.result-card{background:var(--ink);border-radius:8px;overflow:hidden;position:sticky;top:90px;box-shadow:0 28px 70px rgba(15,6,8,.22);}
+.rc-top{padding:44px 40px;text-align:center;background:var(--blood3);}
+.rc-lbl{font-size:.64rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px;}
+.rc-sup{font-size:.76rem;color:var(--silver2);letter-spacing:.08em;margin-bottom:4px;}
+.rc-big{font-family:'Playfair Display',serif;font-size:3.6rem;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;transition:all .4s;}
+.rc-note{font-size:.74rem;color:rgba(255,255,255,.3);}
+.rc-rows{padding:28px 36px;}
+.rc-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.85rem;}
+.rc-row:last-child{border:none;}
+.rc-row span{color:rgba(255,255,255,.32);font-weight:300;}
+.rc-row strong{color:rgba(255,255,255,.88);}
+.rc-row.hl span{color:var(--silver2);font-weight:500;}
+.rc-row.hl strong{color:#fff;font-size:1rem;font-weight:600;}
+.rc-footer{padding:0 28px 28px;}
+.rc-note-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:14px 18px;font-size:.76rem;color:rgba(255,255,255,.4);line-height:1.65;display:flex;gap:10px;align-items:flex-start;margin-bottom:14px;}
+.rc-note-box strong{color:var(--silver2);}
+.rc-cta{display:block;text-align:center;background:var(--blood);color:#fff;font-weight:600;font-size:.92rem;padding:14px;border-radius:4px;text-decoration:none;transition:all .28s;}
+.rc-cta:hover{background:var(--blood2);}
+
+/* ─── FORM — foto de fundo ─── */
+.form-sec{position:relative;overflow:hidden;}
+.form-bg{position:absolute;inset:0;}
+.form-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.12) saturate(.4);}
+.form-content{position:relative;z-index:2;padding:120px 48px;}
+.form-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:64px auto 0;align-items:start;}
+.form-left h3{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;}
+.form-left>p{font-size:.97rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:36px;font-weight:300;}
+.form-guarantees{display:flex;flex-direction:column;gap:20px;}
+.fg{display:flex;gap:14px;align-items:flex-start;}
+.fg-ico{font-size:1.25rem;flex-shrink:0;margin-top:1px;}
+.fg-txt h5{font-size:.88rem;font-weight:600;color:#fff;margin-bottom:2px;}
+.fg-txt p{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.65;font-weight:300;}
+.form-card{background:var(--cream);border-radius:10px;overflow:hidden;box-shadow:0 36px 90px rgba(0,0,0,.45);}
+.form-head{background:var(--blood);padding:28px 36px;}
+.form-head h4{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#fff;margin-bottom:3px;}
+.form-head p{font-size:.8rem;color:rgba(255,255,255,.58);}
+.form-body{padding:36px;}
+.ff{margin-bottom:17px;}
+.ff label{display:block;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-bottom:7px;}
+.ff input,.ff select{width:100%;background:var(--blush);border:1.5px solid var(--blush3);border-radius:4px;padding:12px 15px;color:var(--ink);font-size:.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:all .2s;-webkit-appearance:none;}
+.ff input:focus,.ff select:focus{border-color:var(--blood);background:#fff;box-shadow:0 0 0 3px rgba(140,27,56,.07);}
+.ff input::placeholder{color:rgba(74,32,48,.28);}
+.ff-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cnpj-wrap{position:relative;}
+.cnpj-ok{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:var(--blood);display:none;align-items:center;justify-content:center;font-size:.7rem;color:#fff;font-weight:700;}
+.f-submit{
+  width:100%;padding:15px;background:var(--blood);border:none;border-radius:4px;
+  color:#fff;font-size:.97rem;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .3s;margin-top:8px;letter-spacing:.04em;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.f-submit:hover{background:var(--blood2);transform:translateY(-1px);box-shadow:0 10px 28px rgba(140,27,56,.34);}
+.f-submit:disabled{background:var(--silver);cursor:not-allowed;transform:none;box-shadow:none;}
+.f-privacy{text-align:center;font-size:.7rem;color:var(--ink3);margin-top:10px;line-height:1.6;}
+.form-success{display:none;flex-direction:column;align-items:center;justify-content:center;padding:60px 36px;text-align:center;min-height:420px;}
+.form-success .ico{font-size:3.5rem;margin-bottom:18px;}
+.form-success h4{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--blood);margin-bottom:12px;}
+.form-success p{font-size:.93rem;color:var(--ink3);line-height:1.75;max-width:280px;}
+
+/* ─── URGÊNCIA FINAL ─── */
+.urgencia{position:relative;overflow:hidden;}
+.urg-bg{position:absolute;inset:0;}
+.urg-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.18) saturate(.45);}
+.urg-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(62,10,24,.98),rgba(15,6,8,.95));}
+.urg-content{position:relative;z-index:2;max-width:820px;margin:0 auto;text-align:center;padding:120px 48px;}
+.urg-content .eyebrow{color:rgba(255,255,255,.28);margin-bottom:20px;}
+.urg-content h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4.2rem);font-weight:700;color:#fff;line-height:1.08;margin-bottom:20px;letter-spacing:-.03em;}
+.urg-content h2 em{font-style:italic;color:var(--gold);}
+.urg-content>p{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:52px;font-weight:300;}
+.urg-counters{display:flex;justify-content:center;gap:48px;margin-bottom:56px;flex-wrap:wrap;}
+.uc{text-align:center;}
+.uc-val{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;color:#fff;line-height:1;}
+.uc-lbl{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:6px;}
+.urg-cta{display:inline-flex;align-items:center;gap:14px;background:#fff;color:var(--blood);padding:20px 48px;border-radius:var(--radius);font-weight:700;font-size:1rem;text-decoration:none;transition:all .3s;box-shadow:0 14px 50px rgba(0,0,0,.35);letter-spacing:.04em;}
+.urg-cta:hover{background:var(--blush);transform:translateY(-4px);box-shadow:0 28px 64px rgba(0,0,0,.45);}
+.urg-trust{display:flex;justify-content:center;gap:40px;margin-top:48px;flex-wrap:wrap;}
+.ut{display:flex;align-items:center;gap:8px;font-size:.78rem;color:rgba(255,255,255,.35);}
+.ut::before{content:'✓';color:var(--gold);font-weight:700;}
+
+/* ─── FOOTER ─── */
+footer{padding:36px 48px;background:var(--blood3);text-align:center;font-size:.75rem;color:rgba(255,255,255,.2);line-height:1.85;}
+footer strong{color:rgba(255,255,255,.28);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{min-height:90vh;padding:110px 48px 80px;}
+}
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .nav-links .nav-link{display:none;}
+  .photo-strip{grid-template-columns:1fr;height:auto;}
+  .ps-item{height:260px;}
+  .problema-grid,.accordion-layout,.sim-panel.active,.calc-layout,.form-layout{grid-template-columns:1fr!important;}
+  .pull-quote{position:static;margin-top:24px;max-width:100%;}
+  .acc-sidebar{position:static;}
+  .crimes-grid{grid-template-columns:1fr;}
+  .crime-card{height:360px;}
+  .steps-grid,.modal-grid{grid-template-columns:1fr!important;}
+  .step-arrow{display:none;}
+  .banner-photo-text{padding:0 32px;}
+  .cnd-box{padding:32px;}
+  .como,.modal-sec,.sim-sec,.calc-sec,.accordion-sec,.forma-sec,.urg-content{padding-left:24px;padding-right:24px;}
+  .problema{padding:80px 24px;}
+  .hero-left{padding:110px 32px 80px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="logo">
+    <div class="logo-mark">M</div>
+    <div class="logo-text">
+      <div class="logo-name">MSD Assessoria</div>
+      <div class="logo-sub">Especialistas em Igrejas</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#problema" class="nav-link">O Problema</a>
+    <a href="#lideranca" class="nav-link">Responsabilidade</a>
+    <a href="#simulador" class="nav-link">Simular</a>
+    <a href="#contato" class="nav-cta">Análise Gratuita →</a>
+  </div>
+</nav>
+
+<div class="alert">⚠️ Igrejas com CNPJ têm obrigações previdenciárias ativas — a omissão gera <b>responsabilidade criminal do pastor/líder e bloqueio do CNPJ</b> · Regularize com até 75% de desconto</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left reveal">
+    <div class="eyebrow hero-eyebrow eyebrow--light">MSD Assessoria · Igrejas e Entidades Religiosas</div>
+    <h1>Os dízimos<br>chegam <em>todo mês.</em><br>Os tributos, em<br>alguns casos não<br>foram recolhidos.</h1>
+    <p class="hero-body">Quando a contribuição dos membros é arrecadada e os tributos devidos à Receita Federal não são recolhidos, a Igreja vive uma situação grave — e o representante legal responde por ela. <strong>Existe saída legal, com até 75% de desconto.</strong></p>
+    <div class="hero-btns">
+      <a href="#simulador" class="btn-w solid">→ Simular o desconto</a>
+      <a href="#problema" class="btn-w ghost">Entender o risco</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-pill">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(255,255,255,.15)"/><path d="M4 7l2 2 4-4" stroke="rgba(200,168,106,1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Análise 100% gratuita
+      </div>
+      <div class="trust-pill">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(255,255,255,.15)"/><path d="M4 7l2 2 4-4" stroke="rgba(200,168,106,1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Processo 100% legal
+      </div>
+      <div class="trust-pill">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(255,255,255,.15)"/><path d="M4 7l2 2 4-4" stroke="rgba(200,168,106,1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Proteção imediata ao líder
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Foto: congregação evangélica culto -->
+    <img
+      src="https://images.pexels.com/photos/1666816/pexels-photo-1666816.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      alt="Congregação evangélica em culto"
+      loading="eager"
+    />
+    <div class="hero-right-vignette"></div>
+    <div class="hero-stat-card reveal" style="transition-delay:.3s">
+      <div class="hsc-val">75%</div>
+      <div class="hsc-label">desconto máximo em multas e juros</div>
+      <div class="hsc-row">
+        <div class="hsc-mini"><span>Parcelas</span><strong>145x</strong></div>
+        <div class="hsc-mini"><span>Entrada</span><strong>5%</strong></div>
+        <div class="hsc-mini"><span>CND</span><strong>24h</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">75%</div><div class="stat-lbl">desconto máximo</div></div>
+  <div class="stat-item"><div class="stat-num">5%</div><div class="stat-lbl">entrada mínima</div></div>
+  <div class="stat-item"><div class="stat-num">12×</div><div class="stat-lbl">para pagar a entrada</div></div>
+  <div class="stat-item"><div class="stat-num">145×</div><div class="stat-lbl">parcelas no saldo</div></div>
+  <div class="stat-item"><div class="stat-num">0%</div><div class="stat-lbl">custo antecipado</div></div>
+</div>
+
+<!-- ═══ GALERIA 3 FOTOS ═══ -->
+<div class="photo-strip">
+  <div class="ps-item">
+    <!-- Foto: membros em culto evangélico -->
+    <img src="https://images.pexels.com/photos/8815047/pexels-photo-8815047.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Membros de igreja evangélica em culto" loading="lazy"/>
+    <div class="ps-ov"></div>
+    <div class="ps-label">
+      <div class="eyebrow">Comunidade</div>
+      <h3>Membros que confiam na liderança</h3>
+    </div>
+  </div>
+  <div class="ps-item">
+    <!-- Foto: louvor mãos levantadas -->
+    <img src="https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Louvor evangélico mãos levantadas" loading="lazy"/>
+    <div class="ps-ov"></div>
+    <div class="ps-label">
+      <div class="eyebrow">Adoração</div>
+      <h3>Louvor com gestão responsável</h3>
+    </div>
+  </div>
+  <div class="ps-item">
+    <!-- Foto: pastor pregando -->
+    <img src="https://images.pexels.com/photos/2351719/pexels-photo-2351719.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Pastor pregando ao microfone" loading="lazy"/>
+    <div class="ps-ov"></div>
+    <div class="ps-label">
+      <div class="eyebrow">Liderança</div>
+      <h3>Pastor que responde pela entidade</h3>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ O PROBLEMA ═══ -->
+<section class="problema" id="problema">
+  <div class="problema-grid">
+    <div class="photo-frame reveal">
+      <!-- Foto: congregação reunida -->
+      <img
+        src="https://images.pexels.com/photos/1666816/pexels-photo-1666816.jpeg?auto=compress&cs=tinysrgb&w=900"
+        alt="Congregação evangélica reunida"
+        loading="lazy"
+      />
+      <div class="pull-quote">
+        <p>"Imunidade tributária não significa ausência de obrigações previdenciárias. O CNPJ da Igreja responde por tributos sobre a folha de funcionários."</p>
+        <cite>— Receita Federal do Brasil</cite>
+      </div>
+    </div>
+    <div class="problema-text reveal" style="transition-delay:.15s">
+      <div class="eyebrow" style="margin-bottom:16px">⚠️ O problema que ninguém quer ver</div>
+      <h2>A oferta foi arrecadada. Os funcionários trabalharam. Os tributos, em alguns casos, não foram pagos.</h2>
+      <p>Muitas igrejas acreditam que a <strong>imunidade tributária cobre tudo</strong>. Não cobre. O CNPJ da Igreja está obrigado a recolher INSS sobre a folha de pastores e funcionários CLT, contribuições previdenciárias descontadas dos salários e encargos trabalhistas federais — independente do regime de imunidade fiscal.</p>
+      <p>Quando a tesouraria deixa de recolher esses tributos — mesmo por desconhecimento —, o dinheiro descontado dos colaboradores não chega ao INSS. <strong>O valor foi retido do trabalhador e não repassado ao governo.</strong></p>
+      <p>Isso tem nome jurídico: <strong>apropriação indébita previdenciária.</strong> E tem consequências que alcançam a esfera criminal e o patrimônio pessoal do representante legal.</p>
+      <div class="callout">
+        <p>Uma dívida de R$ 50.000 em principal pode se transformar em <strong>R$ 125.000 ou mais</strong> após anos de multa de 75%, juros Selic acumulados e encargos moratórios. A imunidade não elimina esse passivo — e o relógio não para.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wpp-strip">
+  <p>Identificou essa situação na sua Igreja? <strong>Fale agora com um especialista — análise gratuita, sigilosa e sem compromisso.</strong></p>
+  <a href="https://wa.me/5511999999999?text=Ol%C3%A1!+Sou+l%C3%ADder+de+uma+Igreja+e+quero+regularizar+a+d%C3%ADvida+tribut%C3%A1ria." target="_blank" class="wpp-btn">💬 Falar agora pelo WhatsApp — é gratuito</a>
+</div>
+
+<!-- ═══ CRIMES — 3 fotos de fundo ═══ -->
+<section style="background:var(--ink)">
+  <div class="crimes-header reveal">
+    <div class="eyebrow eyebrow--light" style="margin-bottom:14px">⚖️ Consequências jurídicas e criminais</div>
+    <h2 class="section-title" style="color:#fff">Não recolher tributos com dinheiro em mãos não é descuido. É crime.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.42)">O representante legal pode responder simultâneamente em três esferas — independentemente da imunidade tributária da entidade.</p>
+  </div>
+  <div class="crimes-grid">
+    <!-- Card 1: foto jurídica/presa -->
+    <div class="crime-card">
+      <div class="crime-card-bg" style="background-image:url('https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+      <div class="crime-ov"></div>
+      <div class="crime-content">
+        <span class="crime-tag">Art. 168-A · Código Penal</span>
+        <span class="crime-ico">🔒</span>
+        <h4>Apropriação Indébita Previdenciária</h4>
+        <p>Ocorre quando a Igreja desconta as contribuições dos funcionários mas não repassa ao INSS. O dinheiro foi retido — e não recolhido. Extremamente comum em igrejas com funcionários CLT.</p>
+        <span class="crime-pena">Reclusão 2–5 anos + multa</span>
+      </div>
+    </div>
+    <!-- Card 2: foto documentos/lei -->
+    <div class="crime-card">
+      <div class="crime-card-bg" style="background-image:url('https://images.pexels.com/photos/5669619/pexels-photo-5669619.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+      <div class="crime-ov"></div>
+      <div class="crime-content">
+        <span class="crime-tag">Lei 8.137/90</span>
+        <span class="crime-ico">📋</span>
+        <h4>Sonegação Fiscal e Previdenciária</h4>
+        <p>Omissão contínua no recolhimento de tributos sobre a folha. O pastor ou representante legal responde diretamente — independente de intenção ou desconhecimento da lei.</p>
+        <span class="crime-pena">Reclusão 2–5 anos + multa</span>
+      </div>
+    </div>
+    <!-- Card 3: foto tribunal -->
+    <div class="crime-card">
+      <div class="crime-card-bg" style="background-image:url('https://images.pexels.com/photos/5717648/pexels-photo-5717648.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+      <div class="crime-ov"></div>
+      <div class="crime-content">
+        <span class="crime-tag">Código Civil · Art. 47</span>
+        <span class="crime-ico">⚖️</span>
+        <h4>Responsabilidade Civil Pessoal</h4>
+        <p>O representante legal responde com seu patrimônio pessoal. Imóveis, veículos e contas bancárias podem ser penhorados — mesmo após o término da liderança na Igreja.</p>
+        <span class="crime-pena">Penhora de bens pessoais</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ACCORDION — foto lateral ═══ -->
+<section class="accordion-sec" id="lideranca">
+  <div class="accordion-layout">
+    <div class="acc-sidebar reveal">
+      <!-- Foto: pastor pregando -->
+      <img
+        class="acc-sidebar-img"
+        src="https://images.pexels.com/photos/2351719/pexels-photo-2351719.jpeg?auto=compress&cs=tinysrgb&w=700"
+        alt="Pastor liderando culto evangélico"
+        loading="lazy"
+      />
+      <div class="eyebrow" style="margin-bottom:14px">🤔 Reflexão necessária</div>
+      <h2>Quando os membros contribuem e os tributos não são recolhidos — quem responde?</h2>
+      <p>A legislação é clara: o representante legal da entidade religiosa responde pelas obrigações tributárias. A imunidade do patrimônio não protege o gestor das obrigações previdenciárias.</p>
+    </div>
+    <div class="acc-list reveal" style="transition-delay:.15s">
+      <div class="acc-item danger open" onclick="toggleAcc(this)">
+        <div class="acc-q"><div class="acc-q-txt">O INSS foi descontado do funcionário — mas em alguns casos não foi repassado ao governo. O dinheiro foi para onde?</div><div class="acc-chevron">›</div></div>
+        <div class="acc-body" style="display:block;">Se o orçamento da Igreja previa o pagamento das obrigações previdenciárias e os membros contribuíram para isso, <strong>o dinheiro foi recebido para um fim específico.</strong> Não recolhê-lo ao INSS é, na prática, um desvio de finalidade. A lei não pergunta "havia intenção de pagar?" — ela pergunta: "o dinheiro estava disponível e não foi recolhido?"</div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-q"><div class="acc-q-txt">O líder pode alegar "imunidade tributária" para se isentar de responsabilidade previdenciária?</div><div class="acc-chevron">›</div></div>
+        <div class="acc-body" style="display:none;"><strong>Não.</strong> A imunidade religiosa (art. 150, VI, "b" da CF) refere-se a impostos sobre patrimônio, renda e serviços. Ela <strong>não abrange contribuições previdenciárias</strong> sobre a folha de funcionários. O responsável legal continua obrigado a recolher INSS patronal e do empregado — e responde pela omissão.</div>
+      </div>
+      <div class="acc-item danger" onclick="toggleAcc(this)">
+        <div class="acc-q"><div class="acc-q-txt">Se o líder que gerou a dívida já saiu da Igreja, o novo líder também responde?</div><div class="acc-chevron">›</div></div>
+        <div class="acc-body" style="display:none;">O líder que gerou a dívida pode ser responsabilizado mesmo após deixar o cargo. Mas atenção: <strong>o líder atual também pode ser responsabilizado</strong> se, ciente da dívida, não tomar providências. Omissão diante de um passivo tributário conhecido é negligência com consequências legais próprias — inclusive criminais.</div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-q"><div class="acc-q-txt">Os funcionários podem processar a Igreja pelo INSS não repassado?</div><div class="acc-chevron">›</div></div>
+        <div class="acc-body" style="display:none;"><strong>Sim.</strong> Funcionários que tiveram o INSS descontado mas não repassado podem ter benefícios previdenciários prejudicados — e podem acionar a Igreja e seu representante legal por responsabilidade civil, com possibilidade de <strong>ação penal por gestão fraudulenta do patrimônio da entidade.</strong></div>
+      </div>
+      <div class="acc-item danger" onclick="toggleAcc(this)">
+        <div class="acc-q"><div class="acc-q-txt">A dívida tributária bloqueia convênios, alvarás e atividades da Igreja?</div><div class="acc-chevron">›</div></div>
+        <div class="acc-body" style="display:none;"><strong>Absolutamente.</strong> Sem Certidão Negativa de Débitos (CND), a Igreja não consegue firmar convênios para projetos sociais, emitir recibos de doação com validade fiscal, participar de editais públicos, nem alugar ou adquirir imóveis. <strong>A dívida paralisa toda a atuação social e institucional da comunidade.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wpp-strip">
+  <p>Reconheceu algum desses cenários? <strong>Não espere a Receita Federal agir. A regularização começa com uma conversa gratuita.</strong></p>
+  <a href="https://wa.me/5511999999999?text=Ol%C3%A1!+Quero+regularizar+a+d%C3%ADvida+tribut%C3%A1ria+da+minha+Igreja." target="_blank" class="wpp-btn">💬 Solicitar análise gratuita agora</a>
+</div>
+
+<!-- ═══ BANNER FOTO ═══ -->
+<div class="banner-photo">
+  <!-- Foto: membros culto -->
+  <img src="https://images.pexels.com/photos/8815047/pexels-photo-8815047.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Membros de igreja evangélica" loading="lazy"/>
+  <div class="banner-photo-ov"></div>
+  <div class="banner-photo-text">
+    <h2>A regularização protege o líder, tranquiliza os membros e <em>abre as portas da missão.</em></h2>
+  </div>
+</div>
+
+<!-- ═══ COMO FUNCIONA ═══ -->
+<section class="como" id="como-funciona">
+  <div class="section-intro reveal">
+    <div class="eyebrow" style="margin-bottom:12px">A solução em 4 passos</div>
+    <h2 class="section-title">Como regularizamos a dívida tributária da sua Igreja</h2>
+    <p class="section-sub">Nossa equipe cuida de todo o processo junto à Receita Federal. O líder foca na missão.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step reveal" style="transition-delay:.1s">
+      <div class="step-n">01</div><span class="step-ico">🔍</span>
+      <h4>Diagnóstico gratuito</h4>
+      <p>Levantamos todo o passivo tributário: INSS sobre a folha, contribuições previdenciárias e encargos federais. Calculamos o desconto máximo aplicável ao seu caso.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step reveal" style="transition-delay:.2s">
+      <div class="step-n">02</div><span class="step-ico">📊</span>
+      <h4>Enquadramento otimizado</h4>
+      <p>Identificamos a modalidade federal mais vantajosa para a Igreja — garantindo o maior desconto e as parcelas de menor impacto no orçamento da comunidade.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step reveal" style="transition-delay:.3s">
+      <div class="step-n">03</div><span class="step-ico">🏛️</span>
+      <h4>Apresentação à liderança</h4>
+      <p>Elaboramos relatório completo para o conselho ou assembleia — com plano de regularização, impacto no caixa e cronograma de quitação.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step reveal" style="transition-delay:.4s">
+      <div class="step-n">04</div><span class="step-ico">✅</span>
+      <h4>CND em mãos</h4>
+      <p>Executamos o processo junto à Receita Federal, emitimos a Certidão Negativa de Débitos e a Igreja opera novamente sem restrições — com proteção ao líder.</p>
+    </div>
+  </div>
+  <div class="cnd-box reveal">
+    <div class="cnd-big">24h<span>para a CND</span></div>
+    <div>
+      <h3>🎉 Certidão Negativa em 24 horas após a adesão</h3>
+    </div>
+    <p>A CND não é apenas um documento: é a Igreja recuperando sua capacidade de firmar convênios, captar doações com recibo fiscal, acessar crédito para obras e crescer com segurança. O líder retoma a tranquilidade, os membros recuperam a confiança na gestão.</p>
+  </div>
+</section>
+
+<div class="wpp-strip">
+  <p>Quer saber qual enquadramento é mais vantajoso para a sua Igreja? <strong>Nossa análise é gratuita e retornamos em até 2 dias úteis.</strong></p>
+  <a href="https://wa.me/5511999999999?text=Ol%C3%A1!+Quero+saber+o+melhor+enquadramento+para+regularizar+a+d%C3%ADvida+da+minha+Igreja." target="_blank" class="wpp-btn">💬 Solicitar análise gratuita pelo WhatsApp</a>
+</div>
+
+<!-- ═══ MODALIDADES ═══ -->
+<section class="modal-sec" id="modalidades">
+  <div class="section-intro reveal">
+    <div class="eyebrow" style="margin-bottom:12px">Os melhores benefícios para sua Igreja</div>
+    <h2 class="section-title">Parcelas que cabem no orçamento da comunidade</h2>
+    <p class="section-sub">Com o enquadramento correto, o alívio no caixa pode ser imediato — e o desconto, surpreendente.</p>
+  </div>
+  <div class="modal-grid">
+    <div class="modal-card reveal" style="transition-delay:.1s">
+      <div class="modal-badge">Modalidade Padrão</div>
+      <div class="modal-pct">50%</div>
+      <div class="modal-pct-sub">de desconto em multas e juros</div>
+      <div class="modal-hr"></div>
+      <h4>Parcelamento 60 Meses</h4>
+      <p>Ideal para igrejas com dívidas menores ou que desejam quitação mais rápida. Entrada reduzida e parcelas previsíveis.</p>
+      <div class="modal-list">
+        <div class="ml-item">50% de desconto em multas e juros</div>
+        <div class="ml-item">Entrada de 5% em 12 parcelas</div>
+        <div class="ml-item">Saldo em até 60 meses</div>
+        <div class="ml-item">CND em até 24 horas</div>
+        <div class="ml-item">Proteção criminal ao representante legal</div>
+      </div>
+    </div>
+    <div class="modal-card hi reveal" style="transition-delay:.2s">
+      <div class="modal-badge">⭐ Mais contratado</div>
+      <div class="modal-pct">75%</div>
+      <div class="modal-pct-sub">de desconto em multas e juros</div>
+      <div class="modal-hr"></div>
+      <h4>Parcelamento 145 Meses</h4>
+      <p>O maior prazo disponível com o maior desconto — e o menor impacto possível no caixa mensal. Ideal para passivos mais expressivos.</p>
+      <div class="modal-list">
+        <div class="ml-item">75% de desconto em multas e juros</div>
+        <div class="ml-item">Entrada de 5% em 12 parcelas</div>
+        <div class="ml-item">Saldo em até 145 meses</div>
+        <div class="ml-item">Menor impacto no caixa da comunidade</div>
+        <div class="ml-item">CND em até 24 horas</div>
+        <div class="ml-item">Proteção criminal ao representante legal</div>
+      </div>
+    </div>
+    <div class="modal-card reveal" style="transition-delay:.3s">
+      <div class="modal-badge">Quitação Total</div>
+      <div class="modal-pct">75%</div>
+      <div class="modal-pct-sub">de desconto com pagamento à vista</div>
+      <div class="modal-hr"></div>
+      <h4>Liquidação Integral</h4>
+      <p>Para igrejas com reserva financeira que desejam encerrar definitivamente a dívida com o máximo de desconto.</p>
+      <div class="modal-list">
+        <div class="ml-item">Pagamento em parcela única</div>
+        <div class="ml-item">Desconto máximo garantido</div>
+        <div class="ml-item">CND emitida em 24 horas</div>
+        <div class="ml-item">Encerramento total do passivo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SIMULADOR ═══ -->
+<section class="sim-sec" id="simulador">
+  <div class="section-intro reveal">
+    <div class="eyebrow" style="margin-bottom:12px">Simulador de parcelas</div>
+    <h2 class="section-title">Como a Igreja <em style="font-style:italic;color:var(--blood)">poderá</em> pagar — com o maior desconto</h2>
+    <p class="section-sub">Com o enquadramento certo, as parcelas mensais cabem no orçamento sem pressionar a comunidade. Explore os cenários abaixo.</p>
+  </div>
+  <div class="sim-wrap reveal">
+    <div class="sim-tabs">
+      <button class="sim-tab active" id="tab-60" onclick="switchTab('60')">
+        <span>Saldo em 60 meses</span><span class="tv">60×</span><span style="font-size:.68rem;opacity:.6">parcelas mensais</span>
+      </button>
+      <button class="sim-tab" id="tab-145" onclick="switchTab('145')">
+        <span>Saldo em 145 meses</span><span class="tv">145×</span><span style="font-size:.68rem;opacity:.6">parcelas mensais</span>
+      </button>
+    </div>
+    <!-- TAB 60 -->
+    <div class="sim-panel active" id="sim-60">
+      <div class="sim-form">
+        <h3>Parcelamento em 60 meses</h3>
+        <p>Veja como a Igreja <em>poderá</em> pagar no cenário de 60 meses. O desconto real depende do enquadramento — nossa equipe trabalha para conseguir o máximo.</p>
+        <div class="sf"><label>Valor total da dívida (R$)</label><input type="number" id="div60" value="80000" min="5000" oninput="calc60()"></div>
+        <div class="sf"><label>Desconto aplicável</label><select id="desc60" onchange="calc60()"><option value="50">50% de desconto (padrão)</option><option value="60">60% de desconto (ampliada)</option><option value="75" selected>75% de desconto (máxima)</option></select></div>
+        <div class="sf"><label>Nº de funcionários da Igreja</label><input type="number" id="und60" value="5" min="1" oninput="calc60()"></div>
+        <div class="sf-note">Entrada de <strong style="color:var(--blood)">5% do valor consolidado</strong> paga em 12 parcelas iguais. Após a entrada: saldo em 60 meses.</div>
+        <button class="sf-btn" onclick="calc60()">→ Calcular parcelamento em 60 meses</button>
+      </div>
+      <div class="sim-result">
+        <div class="sr-label">Resultado estimado — 60 meses</div>
+        <div class="sr-big" id="r60Total">R$ 0</div>
+        <div class="sr-note" id="r60Note">valor consolidado com desconto</div>
+        <div class="sr-row"><span>Dívida original</span><strong id="r60Orig">—</strong></div>
+        <div class="sr-row"><span>Desconto aplicado</span><strong id="r60Desc" style="color:var(--silver2)">—</strong></div>
+        <div class="sr-row hl"><span>Valor consolidado</span><strong id="r60Cons">—</strong></div>
+        <div class="sr-row"><span>Entrada total (5%)</span><strong id="r60Ent">—</strong></div>
+        <div class="sr-row"><span>Parcela da entrada (12×)</span><strong id="r60EntMes">—</strong></div>
+        <div class="sr-row hl"><span>Parcela mensal (60×)</span><strong id="r60Parc">—</strong></div>
+        <div class="sr-row hl"><span>Por funcionário / mês</span><strong id="r60Und" style="color:var(--silver2)">—</strong></div>
+        <div class="sr-hint">Valores <strong>estimados</strong>. O desconto real poderá ser ainda mais favorável com o enquadramento correto.</div>
+        <a href="#contato" class="sr-cta">📲 Regularizar minha Igreja</a>
+      </div>
+    </div>
+    <!-- TAB 145 -->
+    <div class="sim-panel" id="sim-145">
+      <div class="sim-form">
+        <h3>Parcelamento em 145 meses</h3>
+        <p>O prazo máximo, com o maior desconto — e o menor impacto possível no caixa mensal. O fôlego que a comunidade precisa para se reorganizar.</p>
+        <div class="sf"><label>Valor total da dívida (R$)</label><input type="number" id="div145" value="80000" min="5000" oninput="calc145()"></div>
+        <div class="sf"><label>Desconto aplicável</label><select id="desc145" onchange="calc145()"><option value="50">50% de desconto (padrão)</option><option value="60">60% de desconto (ampliada)</option><option value="75" selected>75% de desconto (máxima)</option></select></div>
+        <div class="sf"><label>Nº de funcionários da Igreja</label><input type="number" id="und145" value="5" min="1" oninput="calc145()"></div>
+        <div class="sf-note">Entrada de <strong style="color:var(--blood)">5% do valor consolidado</strong> paga em 12 parcelas iguais. Após a entrada: saldo em 145 meses.</div>
+        <button class="sf-btn" onclick="calc145()">→ Calcular parcelamento em 145 meses</button>
+      </div>
+      <div class="sim-result">
+        <div class="sr-label">Resultado estimado — 145 meses</div>
+        <div class="sr-big" id="r145Total">R$ 0</div>
+        <div class="sr-note" id="r145Note">valor consolidado com desconto</div>
+        <div class="sr-row"><span>Dívida original</span><strong id="r145Orig">—</strong></div>
+        <div class="sr-row"><span>Desconto aplicado</span><strong id="r145Desc" style="color:var(--silver2)">—</strong></div>
+        <div class="sr-row hl"><span>Valor consolidado</span><strong id="r145Cons">—</strong></div>
+        <div class="sr-row"><span>Entrada total (5%)</span><strong id="r145Ent">—</strong></div>
+        <div class="sr-row"><span>Parcela da entrada (12×)</span><strong id="r145EntMes">—</strong></div>
+        <div class="sr-row hl"><span>Parcela mensal (145×)</span><strong id="r145Parc">—</strong></div>
+        <div class="sr-row hl"><span>Por funcionário / mês</span><strong id="r145Und" style="color:var(--silver2)">—</strong></div>
+        <div class="sr-hint">Valores <strong>estimados</strong>. Nossa equipe trabalha para que a Igreja pague o <strong>mínimo possível</strong>.</div>
+        <a href="#contato" class="sr-cta">📲 Regularizar minha Igreja</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wpp-strip">
+  <p>A simulação te surpreendeu? <strong>O desconto real pode ser ainda maior com o enquadramento correto.</strong></p>
+  <a href="https://wa.me/5511999999999?text=Ol%C3%A1!+Vi+a+simula%C3%A7%C3%A3o+e+quero+saber+o+desconto+real+da+minha+Igreja." target="_blank" class="wpp-btn">💬 Quero o desconto real — falar agora</a>
+</div>
+
+<!-- ═══ CALCULADORA ═══ -->
+<section class="calc-sec" id="calcular">
+  <div class="section-intro reveal">
+    <div class="eyebrow" style="margin-bottom:12px">Calculadora de economia</div>
+    <h2 class="section-title">Quanto a sua Igreja <em style="font-style:italic;color:var(--blood)">poderia</em> economizar?</h2>
+    <p class="section-sub">Cada mês sem agir representa mais encargos sobre a dívida. Estime agora o benefício que a regularização pode trazer.</p>
+  </div>
+  <div class="calc-layout reveal">
+    <div class="calc-card">
+      <h3>Dados da dívida da Igreja</h3>
+      <p>Preencha os valores para ver a economia estimada com o desconto máximo.</p>
+      <div class="ff"><label>Valor principal dos tributos devidos (R$)</label><input type="number" id="cPrincipal" value="60000" min="5000" oninput="calcEcon()"></div>
+      <div class="ff"><label>Tempo médio de acumulação</label><select id="cTempo" onchange="calcEcon()"><option value="1">1 ano</option><option value="2">2 anos</option><option value="3">3 anos</option><option value="4">4 anos</option><option value="5" selected>5 anos ou mais</option></select></div>
+      <div class="ff"><label>Desconto a aplicar</label><select id="cDesc" onchange="calcEcon()"><option value="50">50% de desconto</option><option value="60">60% de desconto</option><option value="75" selected>75% de desconto (máximo)</option></select></div>
+      <div class="sf-note" style="margin-bottom:20px">Estimativa baseada em multa de 75% + juros Selic compostos. O valor real é apurado na análise individual do CNPJ.</div>
+      <button class="sf-btn" onclick="calcEcon()">→ Calcular a economia agora</button>
+    </div>
+    <div class="result-card">
+      <div class="rc-top">
+        <div class="rc-lbl">Economia estimada da Igreja</div>
+        <div class="rc-sup">Poderá economizar até</div>
+        <div class="rc-big" id="eEcon">R$ 0</div>
+        <div class="rc-note" id="eNota">Preencha os dados ao lado</div>
+      </div>
+      <div class="rc-rows">
+        <div class="rc-row"><span>Tributos principais</span><strong id="ePrinc">—</strong></div>
+        <div class="rc-row"><span>Estimativa multa e juros</span><strong id="eMulta">—</strong></div>
+        <div class="rc-row"><span>Dívida total estimada</span><strong id="eTotal">—</strong></div>
+        <div class="rc-row"><span>Desconto aplicado</span><strong id="eDescVal" style="color:var(--silver2)">—</strong></div>
+        <div class="rc-row hl"><span>A Igreja paga apenas</span><strong id="ePaga">—</strong></div>
+      </div>
+      <div class="rc-footer">
+        <div class="rc-note-box"><span style="font-size:1.2rem;flex-shrink:0">📅</span><p>Saldo pago em até <strong>145 meses</strong> sem comprometer o orçamento da comunidade.</p></div>
+        <a href="#contato" class="rc-cta">📲 Quero regularizar minha Igreja</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wpp-strip">
+  <p>Os números te surpreenderam? <strong>O valor real pode ser ainda mais expressivo. Não espere mais.</strong></p>
+  <a href="https://wa.me/5511999999999?text=Ol%C3%A1!+Calculei+a+economia+e+quero+regularizar+a+d%C3%ADvida+da+minha+Igreja." target="_blank" class="wpp-btn">💬 Garantir esse benefício agora</a>
+</div>
+
+<!-- ═══ FORMULÁRIO — foto de fundo ═══ -->
+<section class="form-sec" id="contato">
+  <div class="form-bg">
+    <!-- Foto: louvor mãos levantadas como fundo escuro -->
+    <img src="https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Louvor evangélico fundo" loading="lazy"/>
+  </div>
+  <div class="form-content">
+    <div class="section-intro reveal">
+      <div class="eyebrow eyebrow--light" style="margin-bottom:12px">Análise gratuita · Retorno em até 24h</div>
+      <h2 class="section-title" style="color:#fff">Garanta a regularização agora</h2>
+      <div style="display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.78);padding:16px 24px;border-radius:6px;font-size:.93rem;margin-top:16px;line-height:1.7;">⏱ Nossa equipe retorna em até <strong style="color:#fff">24 horas</strong> com o diagnóstico completo da situação tributária do CNPJ da Igreja.</div>
+    </div>
+    <div class="form-layout">
+      <div class="form-left reveal">
+        <h3>A Igreja merece estar regular. O líder merece dormir tranquilo.</h3>
+        <p>Nossa equipe já ajudou dezenas de igrejas a sair de situações críticas — com dívidas reduzidas em até 75%, parcelas que cabem no caixa e CND em mãos.</p>
+        <div class="form-guarantees">
+          <div class="fg"><span class="fg-ico">🔒</span><div class="fg-txt"><h5>Sigilo absoluto dos dados</h5><p>Todas as informações tratadas com total confidencialidade. Nenhum dado compartilhado sem autorização.</p></div></div>
+          <div class="fg"><span class="fg-ico">⚡</span><div class="fg-txt"><h5>Retorno em até 24 horas</h5><p>Um especialista tributário entra em contato com diagnóstico e opções disponíveis para o CNPJ da Igreja.</p></div></div>
+          <div class="fg"><span class="fg-ico">⚖️</span><div class="fg-txt"><h5>Processo 100% legal e seguro</h5><p>Apenas programas oficiais da Receita Federal. Zero risco jurídico adicional para a Igreja ou o líder.</p></div></div>
+          <div class="fg"><span class="fg-ico">🎯</span><div class="fg-txt"><h5>Zero custo na análise</h5><p>Análise completa sem custo antecipado. A Igreja só paga se regularizar.</p></div></div>
+        </div>
+      </div>
+      <div class="form-card reveal" style="transition-delay:.15s">
+        <div class="form-head"><h4>Análise gratuita da dívida</h4><p>Sem compromisso · Resposta em até 24 horas</p></div>
+        <div class="form-body" id="formBody">
+          <div class="ff"><label>CNPJ da Igreja / Entidade</label><div class="cnpj-wrap"><input type="text" id="fCnpj" placeholder="00.000.000/0001-00" maxlength="18" oninput="maskCnpj(this)"><div class="cnpj-ok" id="cnpjOk">✓</div></div></div>
+          <div class="ff"><label>Nome da Igreja / Entidade</label><input type="text" id="fNome" placeholder="Ex: Igreja Batista da Paz"></div>
+          <div class="ff"><label>Pastor / Representante Legal</label><input type="text" id="fLider" placeholder="Seu nome completo"></div>
+          <div class="ff-row">
+            <div class="ff"><label>Estado</label><select id="fEstado"><option value="">UF...</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option></select></div>
+            <div class="ff"><label>Cidade</label><input type="text" id="fCidade" placeholder="Cidade"></div>
+          </div>
+          <div class="ff"><label>WhatsApp do Representante</label><input type="tel" id="fWpp" placeholder="(00) 00000-0000" maxlength="15" oninput="maskPhone(this)"></div>
+          <div class="ff"><label>E-mail de contato</label><input type="email" id="fEmail" placeholder="contato@minhaigreja.com.br"></div>
+          <div class="ff"><label>Estimativa da dívida</label><select id="fDivida"><option value="">Selecione a faixa...</option><option value="Até R$ 20.000">Até R$ 20.000</option><option value="R$ 20.001 a R$ 50.000">R$ 20.001 a R$ 50.000</option><option value="R$ 50.001 a R$ 100.000">R$ 50.001 a R$ 100.000</option><option value="R$ 100.001 a R$ 300.000">R$ 100.001 a R$ 300.000</option><option value="Acima de R$ 300.000">Acima de R$ 300.000</option><option value="Não sei o valor exato">Não sei o valor exato</option></select></div>
+          <button class="f-submit" id="fBtn" onclick="enviarForm()"><span>📲</span> Quero regularizar minha Igreja agora</button>
+          <p class="f-privacy">🔒 Dados <strong style="color:var(--blood)">100% seguros</strong> — utilizados apenas para análise tributária.</p>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="ico">✅</div>
+          <h4>Solicitação enviada!</h4>
+          <p>Nossa equipe entra em contato pelo WhatsApp <strong id="successWpp"></strong> em até <strong>24 horas</strong> com o diagnóstico completo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ URGÊNCIA FINAL ═══ -->
+<section class="urgencia">
+  <div class="urg-bg">
+    <!-- Foto: congregação fundo -->
+    <img src="https://images.pexels.com/photos/1666816/pexels-photo-1666816.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Congregação evangélica fundo" loading="lazy"/>
+  </div>
+  <div class="urg-grad"></div>
+  <div class="urg-content">
+    <div class="eyebrow">O custo real de não agir</div>
+    <h2>Líder exposto. Membros prejudicados.<br>Missão bloqueada.<br><em>Ainda dá tempo de virar o jogo.</em></h2>
+    <p>A dívida tributária não resolvida cresce silenciosamente — e quando a Receita Federal age, age rápido: autuação, penhora, restrições ao CNPJ. Cada dia de espera aumenta o passivo e reduz as condições de negociação.</p>
+    <div class="urg-counters">
+      <div class="uc"><div class="uc-val" id="cDias">--</div><div class="uc-lbl">dias restantes no exercício</div></div>
+      <div class="uc"><div class="uc-val">75%</div><div class="uc-lbl">desconto máximo disponível</div></div>
+      <div class="uc"><div class="uc-val">145×</div><div class="uc-lbl">parcelas disponíveis</div></div>
+    </div>
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1!+Sou+l%C3%ADder+de+uma+Igreja+e+quero+regularizar+agora." class="urg-cta" target="_blank">
+      <span style="font-size:1.35rem">💬</span> Regularizar minha Igreja agora — análise gratuita
+    </a>
+    <div class="urg-trust">
+      <div class="ut">Análise 100% gratuita</div>
+      <div class="ut">Processo 100% legal</div>
+      <div class="ut">Proteção imediata ao líder</div>
+      <div class="ut">CND em até 24 horas</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Os valores apresentados são estimativas baseadas em análise técnica. O desconto real e as condições de parcelamento dependem da modalidade do programa federal, do tipo de tributo e da análise individual do CNPJ da entidade junto à Receita Federal do Brasil. A imunidade tributária das entidades religiosas não abrange contribuições previdenciárias sobre a folha de empregados.</p>
+  <p style="margin-top:8px"><strong>MSD Assessoria Empresarial e Financeira</strong> — Especialistas em Regularização Tributária para Igrejas e Entidades Religiosas.</p>
+</footer>
+
+<script>
+/* ─── FORMATAÇÃO ─── */
+const fmt=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
+const fmtDec=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+/* ─── ABAS DO SIMULADOR ─── */
+function switchTab(id){
+  document.querySelectorAll('.sim-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.sim-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.getElementById('sim-'+id).classList.add('active');
+  id==='60'?calc60():calc145();
+}
+
+/* ─── CÁLCULO SIMULADOR ─── */
+function calcSim(div,pct,meses,pre,und){
+  const desc=div*(pct/100),cons=div-desc,ent=cons*.05,saldo=cons-ent,parc=saldo/meses;
+  document.getElementById(pre+'Total').textContent=fmt(cons);
+  document.getElementById(pre+'Note').textContent='valor consolidado com '+pct+'% de desconto';
+  document.getElementById(pre+'Orig').textContent=fmt(div);
+  document.getElementById(pre+'Desc').textContent='- '+fmt(desc);
+  document.getElementById(pre+'Cons').textContent=fmt(cons);
+  document.getElementById(pre+'Ent').textContent=fmt(ent);
+  document.getElementById(pre+'EntMes').textContent=fmtDec(ent/12)+'/mês';
+  document.getElementById(pre+'Parc').textContent=fmtDec(parc)+'/mês';
+  document.getElementById(pre+'Und').textContent=und>0?fmtDec(parc/und)+'/func./mês':'—';
+}
+function calc60(){calcSim(parseFloat(document.getElementById('div60').value)||0,parseInt(document.getElementById('desc60').value),60,'r60',parseInt(document.getElementById('und60').value)||0);}
+function calc145(){calcSim(parseFloat(document.getElementById('div145').value)||0,parseInt(document.getElementById('desc145').value),145,'r145',parseInt(document.getElementById('und145').value)||0);}
+
+/* ─── CALCULADORA ─── */
+function calcEcon(){
+  const p=parseFloat(document.getElementById('cPrincipal').value)||0,t=parseInt(document.getElementById('cTempo').value),d=parseInt(document.getElementById('cDesc').value);
+  const multa=p*Math.min(.75+(Math.pow(1.13,t)-1),2.5),total=p+multa,econ=total*(d/100);
+  document.getElementById('eEcon').textContent=fmt(econ);
+  document.getElementById('eNota').textContent='com '+d+'% de desconto em '+t+' ano(s)';
+  document.getElementById('ePrinc').textContent=fmt(p);
+  document.getElementById('eMulta').textContent=fmt(multa);
+  document.getElementById('eTotal').textContent=fmt(total);
+  document.getElementById('eDescVal').textContent='- '+fmt(econ);
+  document.getElementById('ePaga').textContent=fmt(total-econ);
+}
+
+/* ─── ACCORDION ─── */
+function toggleAcc(el){
+  const was=el.classList.contains('open');
+  document.querySelectorAll('.acc-item').forEach(a=>{a.classList.remove('open');const r=a.querySelector('.acc-body');if(r)r.style.display='none';});
+  if(!was){el.classList.add('open');const r=el.querySelector('.acc-body');if(r)r.style.display='block';}
+}
+
+/* ─── MÁSCARAS ─── */
+function maskCnpj(el){
+  let v=el.value.replace(/\D/g,'').substring(0,14);
+  v=v.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\d{4})(\d)/,'$1-$2');
+  el.value=v;
+  document.getElementById('cnpjOk').style.display=v.replace(/\D/g,'').length===14?'flex':'none';
+}
+function maskPhone(el){
+  let v=el.value.replace(/\D/g,'').substring(0,11);
+  el.value=v.length>10?v.replace(/^(\d{2})(\d{5})(\d{4})$/,'($1) $2-$3'):v.replace(/^(\d{2})(\d{4})(\d{0,4})$/,'($1) $2-$3');
+}
+
+/* ─── ENVIO ─── */
+function enviarForm(){
+  const g=id=>document.getElementById(id).value.trim();
+  const cnpj=g('fCnpj'),nome=g('fNome'),lider=g('fLider'),uf=document.getElementById('fEstado').value,cidade=g('fCidade'),wpp=g('fWpp'),email=g('fEmail'),divida=g('fDivida');
+  if(cnpj.replace(/\D/g,'').length<14)return alert('Informe o CNPJ completo.');
+  if(!nome)return alert('Informe o nome da Igreja.');
+  if(!lider)return alert('Informe o nome do representante legal.');
+  if(!uf)return alert('Selecione o estado.');
+  if(!cidade)return alert('Informe a cidade.');
+  if(wpp.replace(/\D/g,'').length<10)return alert('Informe um WhatsApp válido.');
+  if(!email||!email.includes('@'))return alert('Informe um e-mail válido.');
+  if(!divida)return alert('Selecione a faixa de dívida.');
+  const btn=document.getElementById('fBtn');
+  btn.disabled=true;btn.innerHTML='<span>⏳</span> Enviando...';
+  const msg=encodeURIComponent('⛪ *Nova solicitação — MSD Tributária (Igreja)*\n\n🏛️ *Igreja:* '+nome+'\n📄 *CNPJ:* '+cnpj+'\n👤 *Representante:* '+lider+'\n📍 *Local:* '+cidade+' / '+uf+'\n📱 *WhatsApp:* '+wpp+'\n📧 *E-mail:* '+email+'\n💰 *Dívida estimada:* '+divida+'\n\nSolicitação via site MSD Assessoria — Igrejas.');
+  setTimeout(()=>{
+    window.open('https://wa.me/5511999999999?text='+msg,'_blank');
+    document.getElementById('formBody').style.display='none';
+    document.getElementById('formSuccess').style.display='flex';
+    document.getElementById('successWpp').textContent=wpp;
+  },1200);
+}
+
+/* ─── CONTADOR ─── */
+const n=new Date();
+document.getElementById('cDias').textContent=Math.ceil((new Date(n.getFullYear(),11,31)-n)/864e5);
+
+/* ─── REVEAL ─── */
+const obs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{
+  if(e.isIntersecting)setTimeout(()=>e.target.classList.add('on'),i*75);
+}),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ─── INIT ─── */
+calc60();calc145();calcEcon();
+</script>
+</body>
+</html>
