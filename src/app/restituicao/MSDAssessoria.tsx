@@ -24,7 +24,7 @@ export default function MSDAssessoria() {
   // Cálculo de dias restantes no ano
   const now = new Date();
   const endYear = new Date(now.getFullYear(), 11, 31);
-  const daysLeft = Math.ceil((endYear - now) / (1000 * 60 * 60 * 24));
+  const daysLeft = Math.ceil((endYear.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 
   // Funções de apoio (calculadora)
   const formatCurrency = (v) => "R$ " + Math.round(v).toLocaleString("pt-BR");
