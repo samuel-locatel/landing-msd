@@ -27,7 +27,7 @@ export default function MSDAssessoria() {
   const daysLeft = Math.ceil((endYear.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 
   // Funções de apoio (calculadora)
-  const formatCurrency = (v) => "R$ " + Math.round(v).toLocaleString("pt-BR");
+  const formatCurrency = (v: number) => "R$ " + Math.round(v).toLocaleString("pt-BR");
 
   const meses = calcAnos * 12;
   const base = calcFat * 0.2;
