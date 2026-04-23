@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restituição Tributária para Farmácias | PIS/Cofins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --burgundy:       #6b1a2a;
+  --burgundy-deep:  #4a0f1d;
+  --burgundy-mid:   #8a2338;
+  --burgundy-light: #c0566a;
+  --burgundy-pale:  #f5e8eb;
+  --silver:         #c8cdd6;
+  --silver-light:   #e8eaee;
+  --silver-pale:    #f4f5f7;
+  --silver-deep:    #9aa0ad;
+  --bg:             #ececee;
+  --bg2:            #e2e4e8;
+  --white:          #ffffff;
+  --ink:            #1a1015;
+  --muted:          #6b6470;
+  --gold:           #b8975a;
+  --gold-light:     #d4b87a;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:1rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(236,236,238,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(107,26,42,0.12);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:700;color:var(--burgundy-deep);
+  letter-spacing:-0.01em;
+}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:14px;color:var(--muted);text-decoration:none;font-weight:400;transition:color .2s}
+.nav-links a:hover{color:var(--burgundy)}
+.nav-cta{
+  background:var(--burgundy);color:#fff;
+  border:none;padding:10px 24px;border-radius:6px;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;
+  cursor:pointer;text-decoration:none;
+  transition:background .2s,transform .2s;
+  letter-spacing:0.02em;
+}
+.nav-cta:hover{background:var(--burgundy-deep);transform:translateY(-1px)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:7rem 5rem 4rem;
+  gap:4rem;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg, rgba(107,26,42,0.04) 0%, transparent 60%),
+    var(--bg);
+}
+.hero-bg-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=1400&q=80') center/cover;
+  opacity:0.07;
+  pointer-events:none;
+}
+.hero-left{position:relative;z-index:1}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--burgundy-pale);
+  border:1px solid rgba(107,26,42,0.25);
+  color:var(--burgundy);
+  padding:6px 14px;border-radius:4px;
+  font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+  opacity:0;animation:fadeUp .6s .1s forwards;
+}
+.hero-eyebrow::before{
+  content:'';width:7px;height:7px;
+  background:var(--burgundy);border-radius:50%;
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.6rem,4.5vw,4rem);
+  font-weight:700;line-height:1.1;
+  color:var(--burgundy-deep);
+  margin-bottom:1.5rem;
+  opacity:0;animation:fadeUp .6s .2s forwards;
+}
+.hero h1 em{
+  font-style:italic;color:var(--burgundy-mid);
+  position:relative;
+}
+.hero h1 strong{
+  font-weight:700;
+  background:linear-gradient(135deg,var(--burgundy-deep),var(--burgundy-mid));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-lead{
+  font-size:16px;color:var(--muted);line-height:1.75;
+  margin-bottom:2.5rem;max-width:500px;
+  opacity:0;animation:fadeUp .6s .35s forwards;
+}
+.hero-btns{
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .6s .5s forwards;
+}
+.btn-primary{
+  background:var(--burgundy);color:#fff;
+  padding:15px 34px;border-radius:6px;
+  font-size:15px;font-weight:500;border:none;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  transition:background .2s,transform .2s,box-shadow .2s;
+  box-shadow:0 4px 20px rgba(107,26,42,0.25);
+  letter-spacing:0.02em;
+}
+.btn-primary:hover{background:var(--burgundy-deep);transform:translateY(-2px);box-shadow:0 8px 30px rgba(107,26,42,0.3)}
+.btn-outline{
+  background:transparent;color:var(--burgundy);
+  border:1.5px solid var(--burgundy-light);
+  padding:14px 28px;border-radius:6px;
+  font-size:15px;font-weight:500;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  transition:all .2s;
+}
+.btn-outline:hover{background:var(--burgundy-pale);border-color:var(--burgundy)}
+
+/* HERO CARD */
+.hero-right{position:relative;z-index:1;opacity:0;animation:fadeUp .7s .4s forwards}
+.hero-card{
+  background:var(--white);
+  border-radius:16px;
+  border:1px solid rgba(107,26,42,0.1);
+  box-shadow:0 32px 80px rgba(107,26,42,0.12),0 8px 24px rgba(0,0,0,0.06);
+  overflow:hidden;
+}
+.hero-card-header{
+  background:var(--burgundy-deep);
+  padding:1.5rem 1.75rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-card-img{
+  width:56px;height:56px;border-radius:10px;
+  background:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=200&q=80') center/cover;
+  border:2px solid rgba(255,255,255,0.2);
+  flex-shrink:0;
+}
+.hero-card-header h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:600;color:#fff;line-height:1.3;
+}
+.hero-card-header p{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}
+.card-badge{
+  margin-left:auto;
+  background:var(--gold);color:var(--burgundy-deep);
+  font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 10px;border-radius:4px;white-space:nowrap;
+}
+.hero-card-body{padding:1.5rem 1.75rem}
+.card-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:11px 0;border-bottom:1px solid var(--silver-light);
+  font-size:14px;
+}
+.card-row:last-child{border-bottom:none}
+.card-row-label{color:var(--muted)}
+.card-row-val{font-weight:500;color:var(--ink)}
+.card-row-val.accent{color:var(--burgundy-mid);font-weight:600}
+.hero-total{
+  margin:1.25rem 0 0;
+  background:linear-gradient(135deg,var(--burgundy-deep),var(--burgundy-mid));
+  border-radius:10px;padding:1.25rem 1.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.hero-total-label{font-size:13px;color:rgba(255,255,255,.7);font-weight:400}
+.hero-total-note{font-size:11px;color:rgba(255,255,255,.45);margin-top:3px}
+.hero-total-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:700;color:var(--gold-light);text-align:right;line-height:1;
+}
+.hero-total-val span{font-size:13px;font-family:'Outfit',sans-serif;color:rgba(255,255,255,.6);display:block;margin-top:4px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── CTA STRIP ─── */
+.cta-strip{
+  background:linear-gradient(90deg,var(--burgundy-deep) 0%,var(--burgundy-mid) 100%);
+  padding:1.25rem 5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.cta-strip p{color:rgba(255,255,255,.9);font-size:15px;font-weight:400}
+.cta-strip p strong{color:#fff;font-weight:600}
+.cta-strip-btns{display:flex;gap:10px;flex-wrap:wrap}
+.strip-btn-w{
+  background:#fff;color:var(--burgundy-deep);
+  border:none;padding:10px 22px;border-radius:5px;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.strip-btn-w:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.strip-btn-t{
+  background:transparent;color:rgba(255,255,255,.9);
+  border:1.5px solid rgba(255,255,255,.45);
+  padding:10px 22px;border-radius:5px;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;
+  cursor:pointer;text-decoration:none;
+  transition:all .2s;
+}
+.strip-btn-t:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.8)}
+
+/* ─── TRUST BAR ─── */
+.trust-bar{
+  background:var(--bg2);
+  border-top:1px solid rgba(107,26,42,.08);
+  border-bottom:1px solid rgba(107,26,42,.08);
+  padding:1rem 5rem;
+  display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;
+}
+.trust-item{
+  color:var(--muted);font-size:13px;
+  display:flex;align-items:center;gap:8px;
+}
+.trust-item .ti-icon{
+  width:28px;height:28px;border-radius:6px;
+  background:var(--burgundy-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;
+}
+.trust-item strong{color:var(--burgundy-deep);font-weight:600}
+.trust-sep{width:1px;height:20px;background:rgba(107,26,42,.15)}
+
+/* ─── SECTION COMMONS ─── */
+section{padding:5.5rem 5rem}
+.section-eyebrow{
+  font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--gold);margin-bottom:.75rem;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3.2vw,2.8rem);font-weight:700;
+  color:var(--burgundy-deep);line-height:1.15;margin-bottom:1rem;
+}
+.section-lead{font-size:16px;color:var(--muted);line-height:1.75;max-width:560px}
+
+/* ─── PROBLEM ─── */
+.problem{background:var(--white)}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3.5rem;align-items:start}
+.prob-img-wrap{
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(107,26,42,.12);
+  position:relative;
+}
+.prob-img-wrap img{width:100%;height:420px;object-fit:cover;display:block}
+.prob-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(74,15,29,.6) 0%,transparent 60%);
+}
+.prob-img-stat{
+  position:absolute;bottom:1.5rem;left:1.5rem;
+  background:rgba(255,255,255,.96);border-radius:10px;padding:1rem 1.25rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+.prob-img-stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.4rem;font-weight:700;color:var(--burgundy);line-height:1;
+}
+.prob-img-stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+.prob-features{display:flex;flex-direction:column;gap:1.25rem}
+.feature-card{
+  background:var(--silver-pale);
+  border:1px solid var(--silver-light);
+  border-left:4px solid var(--burgundy-light);
+  border-radius:0 12px 12px 0;
+  padding:1.25rem 1.5rem;
+  display:flex;gap:1rem;align-items:flex-start;
+  transition:border-left-color .2s,transform .2s;
+}
+.feature-card:hover{border-left-color:var(--burgundy);transform:translateX(4px)}
+.feature-icon{font-size:22px;min-width:32px}
+.feature-card h4{font-size:15px;font-weight:600;color:var(--burgundy-deep);margin-bottom:4px}
+.feature-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ─── NUMBERS ─── */
+.numbers{
+  background:
+    url('https://images.unsplash.com/photo-1585435557343-3b092031a831?w=1400&q=80') center/cover;
+  position:relative;
+}
+.numbers::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(74,15,29,.93) 0%,rgba(107,26,42,.88) 100%);
+}
+.numbers>*{position:relative;z-index:1}
+.numbers .section-title{color:#fff}
+.numbers .section-lead{color:rgba(255,255,255,.6)}
+.numbers-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;
+}
+.num-card{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:1.75rem;
+  text-align:center;
+  transition:background .2s,transform .2s;
+}
+.num-card:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.num-big{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;font-weight:700;color:var(--gold-light);
+  line-height:1;margin-bottom:10px;
+}
+.num-label{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+
+/* ─── HOW ─── */
+.how{background:var(--silver-pale);position:relative;overflow:hidden}
+.how::before{
+  content:'';position:absolute;
+  right:-200px;top:-200px;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(107,26,42,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.how-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:center;margin-top:3.5rem}
+.how-img-stack{position:relative;height:520px}
+.how-img-main{
+  position:absolute;top:0;left:0;right:80px;bottom:80px;
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(107,26,42,.15);
+}
+.how-img-main img{width:100%;height:100%;object-fit:cover}
+.how-img-secondary{
+  position:absolute;bottom:0;right:0;width:55%;
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 16px 40px rgba(107,26,42,.2);
+  border:4px solid #fff;
+}
+.how-img-secondary img{width:100%;height:200px;object-fit:cover}
+.steps-list{display:flex;flex-direction:column;gap:1.5rem}
+.step-item{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.25rem 1.5rem;
+  background:var(--white);border-radius:12px;
+  border:1px solid var(--silver-light);
+  transition:border-color .2s,box-shadow .2s;
+}
+.step-item:hover{border-color:var(--burgundy-light);box-shadow:0 8px 24px rgba(107,26,42,.08)}
+.step-num-circle{
+  width:40px;height:40px;min-width:40px;
+  background:var(--burgundy);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;
+}
+.step-item h4{font-size:15px;font-weight:600;color:var(--burgundy-deep);margin-bottom:4px}
+.step-item p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ─── PROJECTION ─── */
+.projection{background:var(--white)}
+.proj-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;margin-top:3.5rem;align-items:start}
+.proj-bars{display:flex;flex-direction:column;gap:1rem}
+.proj-row{
+  display:grid;grid-template-columns:60px 1fr 100px;align-items:center;gap:1rem;
+  padding:.875rem 1.25rem;
+  background:var(--silver-pale);border-radius:10px;
+  border:1px solid var(--silver-light);
+}
+.proj-yr{font-size:14px;font-weight:600;color:var(--burgundy-deep)}
+.proj-bar-track{height:10px;background:var(--silver-light);border-radius:5px;overflow:hidden}
+.proj-bar-fill{height:100%;background:linear-gradient(90deg,var(--burgundy-mid),var(--burgundy-light));border-radius:5px;transition:width 1.2s ease;width:0}
+.proj-val{font-size:14px;font-weight:600;color:var(--burgundy-mid);text-align:right}
+.proj-summary-box{
+  background:linear-gradient(160deg,var(--burgundy-deep) 0%,var(--burgundy-mid) 100%);
+  border-radius:20px;padding:2.5rem;
+  position:sticky;top:7rem;
+}
+.proj-summary-box .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.75rem}
+.proj-total-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.2rem;font-weight:700;color:var(--gold-light);
+  line-height:1;margin-bottom:.5rem;
+}
+.proj-total-label{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:2rem;line-height:1.5}
+.proj-divider{height:1px;background:rgba(255,255,255,.12);margin:1.5rem 0}
+.proj-note{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:2rem}
+.proj-disclaimer{font-size:11px;color:rgba(255,255,255,.3);line-height:1.5}
+
+/* ─── LEGAL ─── */
+.legal-section{
+  background:
+    url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80') center/cover;
+  position:relative;
+}
+.legal-section::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(236,236,238,.97) 0%,rgba(226,228,232,.97) 100%);
+}
+.legal-section>*{position:relative;z-index:1}
+.legal-card{
+  background:var(--white);border-radius:16px;
+  border:1px solid var(--silver-light);
+  border-left:6px solid var(--burgundy);
+  padding:2rem 2.5rem;margin-top:2.5rem;
+  display:flex;gap:2rem;align-items:flex-start;
+  box-shadow:0 12px 40px rgba(107,26,42,.08);
+}
+.legal-icon-box{
+  width:60px;height:60px;min-width:60px;
+  background:var(--burgundy-pale);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;
+}
+.legal-card h3{font-size:17px;font-weight:600;color:var(--burgundy-deep);margin-bottom:.5rem}
+.legal-card p{font-size:14px;color:var(--muted);line-height:1.75}
+.legal-card p strong{color:var(--burgundy-deep)}
+
+/* ─── TESTIMONIAL BAND ─── */
+.testimonial{background:var(--burgundy-deep);padding:4rem 5rem}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.test-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:1.75rem;
+}
+.test-card p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:1.25rem;font-style:italic}
+.test-author{display:flex;align-items:center;gap:.75rem}
+.test-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--burgundy-light),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:13px;color:#fff;flex-shrink:0;
+}
+.test-name{font-size:14px;font-weight:600;color:#fff}
+.test-loc{font-size:12px;color:rgba(255,255,255,.45)}
+.test-stars{color:var(--gold-light);font-size:13px;letter-spacing:1px;margin-bottom:.75rem}
+
+/* ─── FORM ─── */
+.form-section{
+  background:var(--silver-pale);
+  position:relative;overflow:hidden;
+}
+.form-section::after{
+  content:'';position:absolute;bottom:-150px;right:-150px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(107,26,42,.06),transparent 70%);
+  pointer-events:none;
+}
+.form-layout{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
+  margin-top:3.5rem;position:relative;z-index:1;
+}
+.form-left-img{
+  border-radius:14px;overflow:hidden;margin-bottom:2rem;
+  box-shadow:0 16px 48px rgba(107,26,42,.14);
+}
+.form-left-img img{width:100%;height:220px;object-fit:cover;display:block}
+.form-left h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:700;color:var(--burgundy-deep);margin-bottom:1rem;
+}
+.form-left p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:1.5rem}
+.form-checklist{display:flex;flex-direction:column;gap:.875rem}
+.check-item{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:14px;color:var(--ink);
+}
+.check-box{
+  width:22px;height:22px;border-radius:5px;
+  background:var(--burgundy-pale);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--burgundy);font-size:12px;font-weight:700;flex-shrink:0;
+}
+.form-card{
+  background:var(--white);
+  border-radius:20px;
+  box-shadow:0 24px 70px rgba(107,26,42,.12);
+  border:1px solid var(--silver-light);
+  overflow:hidden;
+}
+.form-card-header{
+  background:var(--burgundy-deep);
+  padding:1.5rem 2rem;
+}
+.form-card-header h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;
+}
+.form-card-header p{font-size:13px;color:rgba(255,255,255,.55)}
+.form-card-body{padding:2rem}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.form-group input,.form-group select{
+  width:100%;padding:13px 16px;
+  border:1.5px solid var(--silver-light);border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:15px;color:var(--ink);
+  background:var(--silver-pale);outline:none;
+  transition:border-color .2s,background .2s;
+}
+.form-group input:focus,.form-group select:focus{
+  border-color:var(--burgundy-light);background:#fff;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{
+  width:100%;padding:16px;
+  background:linear-gradient(135deg,var(--burgundy-deep),var(--burgundy-mid));
+  color:#fff;border:none;border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;
+  cursor:pointer;margin-top:.5rem;
+  box-shadow:0 8px 24px rgba(107,26,42,.3);
+  transition:transform .2s,box-shadow .2s;
+  letter-spacing:.02em;
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(107,26,42,.4)}
+.form-note{text-align:center;font-size:12px;color:var(--muted);margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:5px}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--burgundy-deep);
+  padding:2.5rem 5rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.25rem;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:700;color:rgba(255,255,255,.8);
+}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.8)}
+footer p{font-size:12px;color:rgba(255,255,255,.3)}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2.5rem}
+  .hero-bg-img{display:none}
+  section{padding:3.5rem 1.5rem}
+  .prob-grid,.how-grid,.proj-layout,.form-layout,.test-grid,.numbers-grid{grid-template-columns:1fr}
+  .how-img-stack{height:280px}
+  .trust-bar,.cta-strip{padding:1rem 1.5rem;gap:1rem}
+  .trust-sep{display:none}
+  footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+  .form-row{grid-template-columns:1fr}
+  .how-img-main{right:0;bottom:0}
+  .how-img-secondary{display:none}
+  .numbers-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Crédito<span>Farma</span></div>
+  <div class="nav-links">
+    <a href="#problema">O Problema</a>
+    <a href="#como-funciona">Como Funciona</a>
+    <a href="#projecao">Projeção</a>
+    <a href="#analise">Contato</a>
+  </div>
+  <a href="#analise" class="nav-cta">Análise Gratuita</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Direito garantido pelo STJ — Tema 1.048</div>
+    <h1>Sua farmácia está pagando <em>impostos a mais</em> — e você pode<strong> reaver esse dinheiro</strong></h1>
+    <p class="hero-lead">Farmácias no Simples Nacional têm direito à restituição do PIS/Cofins recolhido indevidamente sobre medicamentos. Nossa auditoria especializada identifica e recupera esses valores — sem custo antecipado.</p>
+    <div class="hero-btns">
+      <a href="#analise" class="btn-primary">Solicitar análise gratuita</a>
+      <a href="#como-funciona" class="btn-outline">Como funciona →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hero-card-img"></div>
+        <div>
+          <h3>Farmácia Tchê · Butiá/RS</h3>
+          <p>Caso real auditado — maio/2021 a novembro/2025</p>
+        </div>
+        <div class="card-badge">Caso real</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="card-row">
+          <span class="card-row-label">Total pago (PIS/Cofins)</span>
+          <span class="card-row-val">R$ 55.841,00</span>
+        </div>
+        <div class="card-row">
+          <span class="card-row-label">Valor correto (auditado)</span>
+          <span class="card-row-val">R$ 30.699,00</span>
+        </div>
+        <div class="card-row">
+          <span class="card-row-label">Percentual pago a mais</span>
+          <span class="card-row-val accent">36% indevido</span>
+        </div>
+        <div class="hero-total">
+          <div>
+            <div class="hero-total-label">Crédito identificado</div>
+            <div class="hero-total-note">Corrigido pela Taxa Selic</div>
+          </div>
+          <div class="hero-total-val">
+            R$ 20.207,76
+            <span>a restituir</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP 1 -->
+<div class="cta-strip">
+  <p><strong>Não perca mais tempo.</strong> Cada mês que passa é mais dinheiro sendo pago indevidamente.</p>
+  <div class="cta-strip-btns">
+    <a href="#analise" class="strip-btn-w">Análise gratuita agora</a>
+    <a href="https://wa.me/5500000000000" class="strip-btn-t">💬 Falar com consultor</a>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="ti-icon">⚖️</div><div><strong>STJ Tema 1.048</strong> — Decisão pacificada</div></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item"><div class="ti-icon">🚫</div><div><strong>Sem custo</strong> antecipado</div></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item"><div class="ti-icon">📈</div><div>Correção pela <strong>Taxa Selic</strong></div></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item"><div class="ti-icon">🔒</div><div><strong>Sigilo</strong> dos dados fiscais</div></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item"><div class="ti-icon">⏳</div><div>Até <strong>5 anos</strong> retroativos</div></div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problema">
+  <div class="reveal">
+    <div class="section-eyebrow">Por que isso acontece?</div>
+    <div class="section-title">O sistema cobra — e você paga — sem precisar</div>
+    <p class="section-lead">Medicamentos têm tributação monofásica: o PIS/Cofins é recolhido pelo fabricante. O Simples Nacional, porém, cobra novamente das farmácias. O resultado: anos de pagamento duplicado.</p>
+  </div>
+  <div class="prob-grid">
+    <div class="prob-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=800&q=80" alt="Farmácia moderna" loading="lazy">
+      <div class="prob-img-overlay"></div>
+      <div class="prob-img-stat">
+        <div class="prob-img-stat-num">36%</div>
+        <div class="prob-img-stat-label">do PIS/Cofins pago é indevido</div>
+      </div>
+    </div>
+    <div class="prob-features">
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">💊</div>
+        <div>
+          <h4>Tributação monofásica ignorada</h4>
+          <p>O Simples Nacional não distingue automaticamente medicamentos sujeitos à tributação monofásica, gerando cobrança duplicada mês a mês.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">📋</div>
+        <div>
+          <h4>Divergência entre declaração e SPED</h4>
+          <p>O valor declarado no Simples frequentemente não reflete os créditos aproveitáveis identificados no SINTEGRA e SPED Fiscal.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">⏰</div>
+        <div>
+          <h4>Acúmulo silencioso por anos</h4>
+          <p>Como é mensal e automático, o valor cresce sem que o empresário perceba. Em 4 a 5 anos, o crédito pode ultrapassar R$ 20.000.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⚖️</div>
+        <div>
+          <h4>Direito pacificado pelo STJ</h4>
+          <p>O Tema 1.048 consolidou: farmácias têm direito à exclusão e restituição desses valores, com correção pela Selic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP 2 -->
+<div class="cta-strip">
+  <p><strong>Identificamos créditos reais em farmácias de todo o Brasil.</strong> Você pode ser o próximo.</p>
+  <div class="cta-strip-btns">
+    <a href="#analise" class="strip-btn-w">Quero minha análise gratuita</a>
+    <a href="https://wa.me/5500000000000" class="strip-btn-t">💬 Falar com consultor</a>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<section class="numbers">
+  <div class="reveal">
+    <div class="section-eyebrow" style="color:var(--gold)">Dados reais</div>
+    <div class="section-title">Números que comprovam o potencial</div>
+    <p class="section-lead">Resultados apurados em auditorias reais de farmácias enquadradas no Simples Nacional em todo o Brasil.</p>
+  </div>
+  <div class="numbers-grid">
+    <div class="num-card reveal reveal-delay-1">
+      <div class="num-big">36%</div>
+      <div class="num-label">do PIS/Cofins pago é, em média, indevido em farmácias auditadas</div>
+    </div>
+    <div class="num-card reveal reveal-delay-2">
+      <div class="num-big">R$&nbsp;20k+</div>
+      <div class="num-label">crédito médio identificado em auditorias de 4 a 5 anos de histórico</div>
+    </div>
+    <div class="num-card reveal reveal-delay-3">
+      <div class="num-big">5 anos</div>
+      <div class="num-label">é o prazo máximo retroativo permitido para o pedido de restituição</div>
+    </div>
+    <div class="num-card reveal">
+      <div class="num-big">Selic</div>
+      <div class="num-label">é a taxa de correção aplicada pelo governo sobre os créditos restituídos</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="como-funciona">
+  <div class="reveal">
+    <div class="section-eyebrow">O processo</div>
+    <div class="section-title">Simples, digital e sem risco para você</div>
+    <p class="section-lead">Você fornece os documentos — nossa equipe tributária cuida de todo o processo, do diagnóstico ao recebimento.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-img-stack reveal">
+      <div class="how-img-main">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="Farmácia profissional" loading="lazy">
+      </div>
+      <div class="how-img-secondary">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Documentos e análise" loading="lazy">
+      </div>
+    </div>
+    <div class="steps-list">
+      <div class="step-item reveal reveal-delay-1">
+        <div class="step-num-circle">1</div>
+        <div>
+          <h4>Diagnóstico gratuito</h4>
+          <p>Informamos o CNPJ e dados básicos. Em até 24h, nossa equipe calcula o crédito potencial da sua farmácia — sem custo e sem compromisso.</p>
+        </div>
+      </div>
+      <div class="step-item reveal reveal-delay-2">
+        <div class="step-num-circle">2</div>
+        <div>
+          <h4>Auditoria tributária especializada</h4>
+          <p>Cruzamos o extrato do Simples Nacional com o SINTEGRA e SPED Fiscal para mapear cada centavo de PIS/Cofins pago a mais.</p>
+        </div>
+      </div>
+      <div class="step-item reveal reveal-delay-3">
+        <div class="step-num-circle">3</div>
+        <div>
+          <h4>Pedido administrativo à Receita</h4>
+          <p>Protocolo eletrônico junto à Receita Federal com toda documentação necessária. Sem burocracia para você — nossa equipe cuida de tudo.</p>
+        </div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num-circle">4</div>
+        <div>
+          <h4>Crédito restituído no CNPJ</h4>
+          <p>Valores depositados diretamente na conta da farmácia, corrigidos pela Selic desde a data de cada pagamento indevido.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP 3 -->
+<div class="cta-strip">
+  <p><strong>Processo 100% digital.</strong> Você não precisa sair da farmácia — nós fazemos tudo.</p>
+  <div class="cta-strip-btns">
+    <a href="#analise" class="strip-btn-w">Começar agora — é grátis</a>
+    <a href="https://wa.me/5500000000000" class="strip-btn-t">💬 Falar com consultor</a>
+  </div>
+</div>
+
+<!-- PROJECTION -->
+<section class="projection" id="projecao">
+  <div class="reveal">
+    <div class="section-eyebrow">Projeção futura</div>
+    <div class="section-title">Quanto sua farmácia pode economizar nos próximos 5 anos?</div>
+    <p class="section-lead">Além dos créditos passados, corrigir o recolhimento agora gera economia mensal permanente. Veja a projeção com base no caso real auditado.</p>
+  </div>
+  <div class="proj-layout">
+    <div>
+      <div class="proj-bars" id="projBars"></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:1rem;line-height:1.5">* Projeção com crescimento conservador de 8% a.a. sobre base real auditada. Valores individuais variam conforme faturamento e mix de produtos.</p>
+    </div>
+    <div class="proj-summary-box reveal">
+      <div class="eyebrow">Projeção total acumulada</div>
+      <div class="proj-total-val" id="projTotalVal">—</div>
+      <div class="proj-total-label">em créditos evitados nos próximos 5 anos<br>(2026 – 2030)</div>
+      <div class="proj-divider"></div>
+      <div class="proj-note">Além de recuperar o histórico, sua farmácia para de pagar o excesso todo mês — gerando uma economia contínua e crescente ao longo do tempo.</div>
+      <a href="#analise" class="btn-primary" style="display:block;text-align:center;margin-bottom:10px">Calcular meu crédito</a>
+      <a href="https://wa.me/5500000000000" class="strip-btn-t" style="display:block;text-align:center;font-size:14px">💬 Falar com consultor</a>
+      <div class="proj-disclaimer" style="margin-top:1.25rem">* Valores meramente estimativos. Consulte nossa equipe para análise individualizada.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="legal-section">
+  <div class="reveal">
+    <div class="section-eyebrow">Embasamento jurídico</div>
+    <div class="section-title">Seu direito está garantido por lei</div>
+    <p class="section-lead">Não é uma brecha ou interpretação criativa — é um entendimento consolidado do tribunal mais alto do país para questões infraconstitucionais.</p>
+  </div>
+  <div class="legal-card reveal">
+    <div class="legal-icon-box">⚖️</div>
+    <div>
+      <h3>STJ — Tema 1.048 | PIS/Cofins monofásico no Simples Nacional</h3>
+      <p>O Superior Tribunal de Justiça consolidou que <strong>empresas optantes do Simples Nacional não devem recolher PIS/Cofins sobre produtos sujeitos à substituição tributária e tributação monofásica</strong> — o que inclui a grande maioria dos medicamentos comercializados em farmácias. O entendimento permite a restituição dos valores pagos indevidamente nos últimos 5 anos, com correção pela <strong>taxa Selic</strong>, via pedido administrativo eletrônico junto à Receita Federal, sem necessidade de ação judicial.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial">
+  <div class="reveal" style="text-align:center">
+    <div class="section-eyebrow" style="color:var(--gold)">Depoimentos</div>
+    <div class="section-title" style="color:#fff">O que dizem nossos clientes</div>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal reveal-delay-1">
+      <div class="test-stars">★★★★★</div>
+      <p>"Não acreditava que teria tanto dinheiro a receber. Em menos de 90 dias o crédito foi aprovado e depositado. Recomendo a qualquer farmácia no Simples."</p>
+      <div class="test-author">
+        <div class="test-avatar">MA</div>
+        <div>
+          <div class="test-name">Maria A.</div>
+          <div class="test-loc">Farmácia — interior de SP</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card reveal reveal-delay-2">
+      <div class="test-stars">★★★★★</div>
+      <p>"O processo foi todo digital. Eles me explicaram tudo, cuidaram dos documentos e eu só esperei. Recebi R$ 17.400 de crédito que não sabia que existia."</p>
+      <div class="test-author">
+        <div class="test-avatar">RS</div>
+        <div>
+          <div class="test-name">Roberto S.</div>
+          <div class="test-loc">Farmácia — região Sul</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card reveal reveal-delay-3">
+      <div class="test-stars">★★★★★</div>
+      <p>"Minha contadora nem sabia dessa possibilidade. A equipe foi extremamente profissional e transparente durante todo o processo. Indico para todos!"</p>
+      <div class="test-author">
+        <div class="test-avatar">CF</div>
+        <div>
+          <div class="test-name">Claudia F.</div>
+          <div class="test-loc">Farmácia — Nordeste</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP 4 -->
+<div class="cta-strip">
+  <p><strong>Junte-se a centenas de farmácias</strong> que já recuperaram seus créditos tributários.</p>
+  <div class="cta-strip-btns">
+    <a href="#analise" class="strip-btn-w">Quero recuperar meus créditos</a>
+    <a href="https://wa.me/5500000000000" class="strip-btn-t">💬 Falar com consultor</a>
+  </div>
+</div>
+
+<!-- FORM -->
+<section class="form-section" id="analise">
+  <div class="form-layout">
+    <div class="reveal">
+      <div class="form-left-img">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="Farmácia profissional" loading="lazy">
+      </div>
+      <h2>Descubra quanto sua farmácia tem a receber</h2>
+      <p>Preencha ao lado e um especialista tributário entrará em contato em até <strong>24 horas úteis</strong> com a estimativa do crédito da sua farmácia — sem custo e sem compromisso.</p>
+      <div class="form-checklist">
+        <div class="check-item"><div class="check-box">✓</div>Análise 100% gratuita e sem compromisso</div>
+        <div class="check-item"><div class="check-box">✓</div>Honorários somente sobre o crédito recuperado</div>
+        <div class="check-item"><div class="check-box">✓</div>Processo digital — sem deslocamentos</div>
+        <div class="check-item"><div class="check-box">✓</div>Equipe especializada em farmácias no Simples</div>
+        <div class="check-item"><div class="check-box">✓</div>Sigilo absoluto dos dados fiscais</div>
+        <div class="check-item"><div class="check-box">✓</div>Resultados em até 90 dias</div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="form-card">
+        <div class="form-card-header">
+          <h3>Solicitar análise gratuita</h3>
+          <p>Preencha os dados e receba sua estimativa em 24h</p>
+        </div>
+        <div class="form-card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome do responsável</label>
+              <input type="text" placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+              <label>Nome da farmácia</label>
+              <input type="text" placeholder="Farmácia...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>CNPJ da farmácia</label>
+            <input type="text" id="cnpj" placeholder="00.000.000/0001-00">
+          </div>
+          <div class="form-group">
+            <label>WhatsApp para contato</label>
+            <input type="tel" id="wpp" placeholder="(00) 90000-0000">
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label>Faturamento mensal aproximado</label>
+            <select>
+              <option value="">Selecione...</option>
+              <option>Até R$ 30.000</option>
+              <option>R$ 30.000 – R$ 80.000</option>
+              <option>R$ 80.000 – R$ 200.000</option>
+              <option>Acima de R$ 200.000</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Há quanto tempo no Simples Nacional?</label>
+            <select>
+              <option value="">Selecione...</option>
+              <option>Menos de 1 ano</option>
+              <option>1 a 3 anos</option>
+              <option>3 a 5 anos</option>
+              <option>Mais de 5 anos</option>
+            </select>
+          </div>
+          <button class="btn-submit" id="formBtn">Solicitar análise gratuita →</button>
+          <p class="form-note">🔒 Seus dados são protegidos e não compartilhados</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Crédito<span>Farma</span></div>
+  <div class="footer-links">
+    <a href="#">Política de Privacidade</a>
+    <a href="#">Termos de Uso</a>
+    <a href="#analise">Contato</a>
+  </div>
+  <p>© 2025 CréditoFarma. Material de caráter informativo. Consulte profissional habilitado.</p>
+</footer>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach(el => revealObs.observe(el));
+
+// Projection bars
+const baseCredito = 5963;
+const growth = 0.08;
+const years = [2026,2027,2028,2029,2030];
+const values = years.map((y,i) => Math.round(baseCredito * Math.pow(1+growth, i+1)));
+const maxVal = Math.max(...values);
+const total = values.reduce((a,b)=>a+b,0);
+
+document.getElementById('projTotalVal').textContent = 'R$ ' + total.toLocaleString('pt-BR');
+
+const barsContainer = document.getElementById('projBars');
+years.forEach((y,i) => {
+  const pct = Math.round((values[i]/maxVal)*100);
+  const row = document.createElement('div');
+  row.className = 'proj-row reveal';
+  row.innerHTML = `
+    <div class="proj-yr">${y}</div>
+    <div class="proj-bar-track"><div class="proj-bar-fill" data-pct="${pct}"></div></div>
+    <div class="proj-val">R$ ${values[i].toLocaleString('pt-BR')}</div>
+  `;
+  barsContainer.appendChild(row);
+  revealObs.observe(row);
+});
+
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.proj-bar-fill').forEach(bar => {
+        setTimeout(() => bar.style.width = bar.dataset.pct + '%', 300);
+      });
+      barObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+barObs.observe(barsContainer);
+
+// CNPJ mask
+const cnpjEl = document.getElementById('cnpj');
+if(cnpjEl) cnpjEl.addEventListener('input', function(){
+  let v = this.value.replace(/\D/g,'').slice(0,14);
+  if(v.length>12) v=v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d)/,'$1.$2.$3/$4-$5');
+  else if(v.length>8) v=v.replace(/^(\d{2})(\d{3})(\d{3})(\d+)/,'$1.$2.$3/$4');
+  else if(v.length>5) v=v.replace(/^(\d{2})(\d{3})(\d+)/,'$1.$2.$3');
+  else if(v.length>2) v=v.replace(/^(\d{2})(\d+)/,'$1.$2');
+  this.value=v;
+});
+
+// WhatsApp mask
+const wppEl = document.getElementById('wpp');
+if(wppEl) wppEl.addEventListener('input', function(){
+  let v = this.value.replace(/\D/g,'').slice(0,11);
+  if(v.length>6) v=v.replace(/^(\d{2})(\d{5})(\d+)/,'($1) $2-$3');
+  else if(v.length>2) v=v.replace(/^(\d{2})(\d+)/,'($1) $2');
+  this.value=v;
+});
+
+// Form submit
+document.getElementById('formBtn').addEventListener('click', function(){
+  this.textContent = '✓ Solicitação enviada! Retornaremos em até 24 horas.';
+  this.style.background = '#2d6a2d';
+  this.disabled = true;
+});
+</script>
+</body>
+</html>
